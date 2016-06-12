@@ -20,12 +20,13 @@ function redraw() {
     var hour = engine.variables.hour;
     var day = ((hour + 0.5) / 14) % 1.0;
     heavens.day = day;
+    heavens.month = 0.5;
     heavens.redraw();
     sheet.deleteRule(0);
     if (day < 0.5) {
         sheet.insertRule('body { color: black; }', 0);
     } else {
-        sheet.insertRule('body { color: hsla(240, 25.00%, 83.00%, 1); }', 0);
+        sheet.insertRule('body { color: hsla(240, 25.00%, 83.00%, 1); text-shadow: black 0 0 5pt; }', 0);
     }
 }
 redraw();

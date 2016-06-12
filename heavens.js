@@ -19,7 +19,7 @@ function Heavens(body, scope) {
     this.document = this.window.document;
     // this.animator.requestAnimation();
     this.day = 0;
-    this.month = 0;
+    this.month = 0.5;
     // var day = Date.now() / 240000 * 2 % 1;
     // var month = 0.5; // A childish simplification
 }
