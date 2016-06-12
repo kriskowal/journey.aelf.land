@@ -1,0 +1,73 @@
+body {
+    font-family: Libre Baskerville, Book Antiqua, serif;
+    font-size: 200%;
+}
+
+.parent {
+    position: absolute;
+    display: table;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    outline: dotted blue 1px;
+}
+
+.child {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 1em;
+    width: 40ex;
+}
+
+.outer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.inner {
+    display: flex-item;
+    flex: 0 1 auto;
+    max-width: 40ex;
+    text-align: justify;
+}
+
+th {
+    vertical-align: top;
+}
+
+td {
+    vertical-align: top;
+    cursor: pointer;
+}
+
+li {
+    list-style-type: decimal;
+}
+
+a {
+    color: hsla(240, 42.00%, 25.00%, 1);
+}
+
+a:link {
+    color: hsla(240, 42.00%, 25.00%, 1);
+}
+
+a:hover {
+    color: hsla(240, 42.00%, 25.00%, 1);
+}
+
+a:visited {
+    color: hsla(240, 42.00%, 25.00%, 1);
+}
+
+.about {
+    position: absolute;
+    height: 1em;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
