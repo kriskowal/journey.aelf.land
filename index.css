@@ -1,6 +1,7 @@
 body {
     font-family: Libre Baskerville, Book Antiqua, serif;
     font-size: 200%;
+    transition: color 1s;
 }
 
 .parent {
@@ -11,6 +12,7 @@ body {
     height: 100%;
     width: 100%;
     outline: dotted blue 1px;
+    transition: transform 1s ease, opacity 1s ease;
 }
 
 .child {

@@ -14,17 +14,27 @@ var lunar = new Point2();
 module.exports = Heavens;
 
 function Heavens(body, scope) {
-    // this.animator = scope.animator.add(this);
+    this.animator = scope.animator.add(this);
+    this.animator.requestAnimation();
     this.window = scope.window;
     this.document = this.window.document;
-    // this.animator.requestAnimation();
-    this.day = 0;
+    this.day = 0.5 / 14;
     this.month = 0.5;
-    // var day = Date.now() / 240000 * 2 % 1;
-    // var month = 0.5; // A childish simplification
+    this.dayT = this.day;
+    this.dayV = 0;
+    this.dayA = 0;
+    Object.seal(this);
 }
 
+Heavens.prototype.animate = function animate() {
+    this.redraw();
+};
+
 Heavens.prototype.redraw = function redraw() {
+
+    var day = this.day;
+    var month = this.month;
+
     var scene = this.document.querySelector("#scene");
     windowSize.x = this.window.innerWidth;
     windowSize.y = this.window.innerHeight;
@@ -44,20 +54,20 @@ Heavens.prototype.redraw = function redraw() {
     var breadth = windowSize.x / documentSize.x / scale * 500;
 
     //window.document.querySelector("#atmosphere").style.opacity = 0;
-    solar.y = (-Math.sin(2 * Math.PI * this.day) * 1000 + 1000).toFixed(2);
-    lunar.y = (-Math.sin(2 * Math.PI * this.day + 2 * Math.PI * this.month) * 1000 + 1000).toFixed(2);
-    solar.x = (-Math.cos(2 * Math.PI * this.day) * breadth + 1000).toFixed(2);
-    lunar.x = (-Math.cos(2 * Math.PI * this.day + 2 * Math.PI * this.month) * breadth + 1000).toFixed(2);
+    solar.y = (-Math.sin(2 * Math.PI * day) * 1000 + 1000).toFixed(2);
+    lunar.y = (-Math.sin(2 * Math.PI * day + 2 * Math.PI * month) * 1000 + 1000).toFixed(2);
+    solar.x = (-Math.cos(2 * Math.PI * day) * breadth + 1000).toFixed(2);
+    lunar.x = (-Math.cos(2 * Math.PI * day + 2 * Math.PI * month) * breadth + 1000).toFixed(2);
     var cycle =
-        Math.sin(2 * Math.PI * this.day) / 1 +
-        Math.sin(6 * Math.PI * this.day) / 3 +
-        Math.sin(10 * Math.PI * this.day) / 5 +
-        Math.sin(14 * Math.PI * this.day) / 7;
-        //Math.sin(18 * Math.PI * this.day) / 9;
+        Math.sin(2 * Math.PI * day) / 1 +
+        Math.sin(6 * Math.PI * day) / 3 +
+        Math.sin(10 * Math.PI * day) / 5 +
+        Math.sin(14 * Math.PI * day) / 7;
+        //Math.sin(18 * Math.PI * day) / 9;
     var clamped = Math.min(1, Math.max(-1, cycle * 1.5));
     var opacity = clamped / 2 + .5;
     this.document.querySelector("#atmosphere").style.opacity = opacity;
-    var rotation = (this.day * 360).toFixed(2);
+    var rotation = (day * 360).toFixed(2);
     this.document.querySelector("#stars").setAttribute("transform", "translate(1000, 750) rotate(" + rotation + ")");
     this.document.querySelector("#sun").setAttribute("transform", "translate(" + solar.x + ", " + solar.y + ")");
     this.document.querySelector("#moon").setAttribute("transform", "translate(" + lunar.x + ", " + lunar.y + ")");

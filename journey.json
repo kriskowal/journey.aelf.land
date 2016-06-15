@@ -13,55 +13,55 @@
     },
     "start.2": {
         "type": "set",
-        "variable": "hunger",
+        "variable": "day",
         "value": 0,
         "next": "start.3"
     },
     "start.3": {
         "type": "set",
-        "variable": "thirst",
+        "variable": "hunger",
         "value": 0,
         "next": "start.4"
     },
     "start.4": {
         "type": "set",
-        "variable": "fish",
+        "variable": "thirst",
         "value": 0,
         "next": "start.5"
     },
     "start.5": {
         "type": "set",
-        "variable": "deer",
+        "variable": "fish",
         "value": 0,
         "next": "start.6"
     },
     "start.6": {
         "type": "set",
-        "variable": "water",
+        "variable": "deer",
         "value": 0,
         "next": "start.7"
     },
     "start.7": {
         "type": "set",
-        "variable": "empty",
-        "value": 2,
+        "variable": "water",
+        "value": 0,
         "next": "start.8"
     },
     "start.8": {
         "type": "set",
-        "variable": "river",
-        "value": 0,
+        "variable": "empty",
+        "value": 2,
         "next": "start.9"
     },
     "start.9": {
         "type": "set",
-        "variable": "game",
+        "variable": "river",
         "value": 0,
         "next": "start.10"
     },
     "start.10": {
         "type": "set",
-        "variable": "end",
+        "variable": "game",
         "value": 0,
         "next": "start.11"
     },
@@ -97,7 +97,7 @@
         "text": "However, you succumb to your thirst.",
         "lift": " ",
         "drop": " ",
-        "next": "death"
+        "next": "fin"
     },
     "journey.3": {
         "type": "jge",
@@ -111,7 +111,7 @@
         "text": "However, You succumb to your hunger.",
         "lift": " ",
         "drop": " ",
-        "next": "death"
+        "next": "fin"
     },
     "journey.6": {
         "type": "call",
@@ -1266,6 +1266,12 @@
         "type": "set",
         "variable": "hour",
         "value": 0,
+        "next": "tick.5"
+    },
+    "tick.5": {
+        "type": "add",
+        "variable": "day",
+        "value": 1,
         "next": null
     },
     "now": {
@@ -2953,26 +2959,155 @@
         "drop": "",
         "next": null
     },
-    "death": {
+    "fin": {
         "type": "text",
-        "text": "The",
+        "text": "Having travelled",
         "lift": " ",
         "drop": " ",
-        "next": "death.1"
+        "next": "fin.1"
     },
-    "death.1": {
+    "fin.1": {
+        "type": "switch",
+        "variable": "day",
+        "value": 0,
+        "mode": "walk",
+        "branches": [
+            "fin.1.1",
+            "fin.1.2"
+        ]
+    },
+    "fin.1.1": {
+        "type": "goto",
+        "next": "fin.2"
+    },
+    "fin.1.2": {
+        "type": "print",
+        "variable": "day",
+        "next": "fin.1.2.1"
+    },
+    "fin.1.2.1": {
+        "type": "text",
+        "text": "day",
+        "lift": " ",
+        "drop": "",
+        "next": "fin.1.2.2"
+    },
+    "fin.1.2.2": {
+        "type": "switch",
+        "variable": "day",
+        "value": 0,
+        "mode": "walk",
+        "branches": [
+            "fin.1.2.2.1",
+            "fin.1.2.2.2",
+            "fin.1.2.2.3"
+        ]
+    },
+    "fin.1.2.2.1": {
+        "type": "text",
+        "text": "s",
+        "lift": "",
+        "drop": "",
+        "next": "fin.1.2.3"
+    },
+    "fin.1.2.2.2": {
+        "type": "goto",
+        "next": "fin.1.2.3"
+    },
+    "fin.1.2.2.3": {
+        "type": "text",
+        "text": "s",
+        "lift": "",
+        "drop": "",
+        "next": "fin.1.2.3"
+    },
+    "fin.1.2.3": {
+        "type": "text",
+        "text": "and",
+        "lift": " ",
+        "drop": " ",
+        "next": "fin.2"
+    },
+    "fin.2": {
+        "type": "switch",
+        "variable": "hour",
+        "value": 0,
+        "mode": "walk",
+        "branches": [
+            "fin.2.1",
+            "fin.2.2",
+            "fin.2.3"
+        ]
+    },
+    "fin.2.1": {
+        "type": "text",
+        "text": "no hours",
+        "lift": "",
+        "drop": "",
+        "next": "fin.3"
+    },
+    "fin.2.2": {
+        "type": "text",
+        "text": "an hour",
+        "lift": "",
+        "drop": "",
+        "next": "fin.3"
+    },
+    "fin.2.3": {
+        "type": "print",
+        "variable": "hour",
+        "next": "fin.2.3.1"
+    },
+    "fin.2.3.1": {
+        "type": "text",
+        "text": "hours",
+        "lift": " ",
+        "drop": "",
+        "next": "fin.3"
+    },
+    "fin.3": {
+        "type": "text",
+        "text": ", the",
+        "lift": "",
+        "drop": " ",
+        "next": "fin.4"
+    },
+    "fin.4": {
         "type": "print",
         "variable": "x",
-        "next": "death.2"
+        "next": "fin.5"
     },
-    "death.2": {
+    "fin.5": {
         "type": "text",
-        "text": "league marker serves as your grave stone.",
+        "text": "league marker serves passes for your tomb stone.",
         "lift": " ",
         "drop": " ",
-        "next": "death.3"
+        "next": "fin.6"
     },
-    "death.3": {
+    "fin.6": {
+        "type": "paragraph",
+        "next": "fin.7"
+    },
+    "fin.7": {
+        "type": "text",
+        "text": "“Here lies",
+        "lift": " ",
+        "drop": " ",
+        "next": "fin.8"
+    },
+    "fin.8": {
+        "type": "print",
+        "variable": "x",
+        "next": "fin.9"
+    },
+    "fin.9": {
+        "type": "text",
+        "text": "leagues. May they rest in peace.”",
+        "lift": " ",
+        "drop": " ",
+        "next": "fin.10"
+    },
+    "fin.10": {
         "type": "set",
         "variable": "end",
         "value": 1,

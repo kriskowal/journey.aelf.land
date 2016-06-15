@@ -1,17 +1,17 @@
 {=0 hour} {=0 x} # the time and place
+{=0 day} # days traveled
 {=0 hunger} {=0 thirst} # how many meals and bottles of water are needed
 {=0 fish} {=0 deer} # how many meals worth of food
 {=0 water} {=2 empty} # how many bottles of water, how many empty
 {=0 river} # whether there is water in the vicinity
 {=0 game} # whether there is game in the vicinity
-{=0 end}
 
 You begin your journey at {->time}.
 -> journey
 
 = journey
-  - {>=7 thirst} However, you succumb to your thirst. -> death
-  - {>=7 hunger} However, You succumb to your hunger. -> death
+  - {>=7 thirst} However, you succumb to your thirst. -> fin
+  - {>=7 hunger} However, You succumb to your hunger. -> fin
 
   {->setting}
   ---
@@ -121,7 +121,7 @@ You begin your journey at {->time}.
   | # birch hour, the hour after low non|
   {+1 thirst} | # yew hour, the hour before low don|
   {+1 hunger} } # low don, the hour of the willow
-  - {>=14 hour} {=0 hour}
+  - {>=14 hour} {=0 hour} {+1 day}
 
 = now()
   The hour rolls on, now {->time}.
@@ -241,6 +241,11 @@ You begin your journey at {->time}.
   are emaciated and wasting away|
   are likely to die of your hunger soon}
 
-= death
-  The {$x} league marker serves as your grave stone.
+= fin
+  Having travelled
+  {$day||{$day} day{$day|s||s} and }
+  {$hour|no hours|an hour|{$hour} hours},
+  the {$x} league marker serves passes for your tomb stone.
+  ---
+  “Here lies {$x} leagues. May they rest in peace.”
   {=1 end}

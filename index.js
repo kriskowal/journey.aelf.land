@@ -1,9 +1,10 @@
 'use strict';
+var Animator = require('blick');;
 var Engine = require('inkblot/engine');
-var Document = require('inkblot/document');
+var Document = require('./document');
 var story = require('./journey.json');
 var Heavens = require('./heavens');
-var doc = new Document(document.getElementById('body'));
+var doc = new Document(document.body);
 var engine = new Engine(story, 'start', doc, doc);
 doc.clear();
 engine.continue();
@@ -14,6 +15,7 @@ sheet.insertRule('body { color: black }', 0);
 
 var scope = {};
 scope.window = window;
+scope.animator = new Animator();
 var heavens = new Heavens(null, scope);
 
 function redraw() {
@@ -21,7 +23,6 @@ function redraw() {
     var day = ((hour + 0.5) / 14) % 1.0;
     heavens.day = day;
     heavens.month = 0.5;
-    heavens.redraw();
     sheet.deleteRule(0);
     if (day < 0.5) {
         sheet.insertRule('body { color: black; }', 0);
@@ -35,8 +36,8 @@ window.onkeypress = function onkeypress(event) {
     if (engine.variables.end) {
         return;
     }
-    var key = event.code;
-    var match = /^Digit(\d+)$/.exec(key);
+    var key = event.key || String.fromCharCode(event.charCode);
+    var match = /^(\d+)$/.exec(key);
     if (match) {
         engine.answer(match[1]);
     }
