@@ -65,7 +65,7 @@ Document.prototype.flush = function flush() {
 };
 
 Document.prototype.pardon = function pardon() {
-    this.clear();
+    this.options.innerHTML = '';
 };
 
 Document.prototype.display = function display() {

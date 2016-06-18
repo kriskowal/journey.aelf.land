@@ -19,20 +19,30 @@ function Heavens(body, scope) {
     this.window = scope.window;
     this.document = this.window.document;
     this.day = 0.5 / 14;
+    this.day$ = 0;
     this.month = 0.5;
-    this.dayT = this.day;
-    this.dayV = 0;
-    this.dayA = 0;
+    this.phase = 'day';
+    this.sheet = null;
     Object.seal(this);
 }
 
+Heavens.prototype.setSheet = function (sheet) {
+    sheet.insertRule('body { color: black }', 0);
+    this.sheet = sheet;
+};
+
 Heavens.prototype.animate = function animate() {
-    this.redraw();
+    var r = 0.99;
+    this.day$ = this.day$ * r + this.day * (1 - r);
+
+    var d = this.day - this.day$;
+    if (Math.abs(d) > 0.001) {
+        this.redraw();
+    }
 };
 
 Heavens.prototype.redraw = function redraw() {
-
-    var day = this.day;
+    var day = this.day$ % 1.0;
     var month = this.month;
 
     var scene = this.document.querySelector("#scene");
@@ -71,4 +81,15 @@ Heavens.prototype.redraw = function redraw() {
     this.document.querySelector("#stars").setAttribute("transform", "translate(1000, 750) rotate(" + rotation + ")");
     this.document.querySelector("#sun").setAttribute("transform", "translate(" + solar.x + ", " + solar.y + ")");
     this.document.querySelector("#moon").setAttribute("transform", "translate(" + lunar.x + ", " + lunar.y + ")");
+
+    var phase = day < 0.5 ? 'day' : 'night';
+    if (phase !== this.phase) {
+        this.sheet.deleteRule(0);
+        if (day < 0.5) {
+            this.sheet.insertRule('body { color: black; }', 0);
+        } else {
+            this.sheet.insertRule('body { color: hsla(240, 25.00%, 83.00%, 1); text-shadow: black 0 0 5pt; }', 0);
+        }
+        this.phase = phase;
+    }
 };
