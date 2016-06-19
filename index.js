@@ -13,7 +13,7 @@ var style = document.getElementById('style');
 
 var heavens = new Heavens(null, scope);
 heavens.setSheet(style.sheet);
-var doc = new Document(document.body);
+var doc = new Document(document.body, redraw);
 var engine = new Engine(story, 'start', doc, doc);
 
 doc.clear();

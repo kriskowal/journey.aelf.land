@@ -2,7 +2,7 @@
 
 module.exports = Document;
 
-function Document(element) {
+function Document(element, redraw) {
     var self = this;
     this.document = element.ownerDocument;
     this.parent = element;
@@ -16,6 +16,7 @@ function Document(element) {
     this.p = false;
     this.br = false;
     this.onclick = onclick;
+    this.redraw = redraw;
     function onclick(event) {
         self.answer(event.target.number);
     }
@@ -61,6 +62,7 @@ Document.prototype.option = function option(number, label) {
 };
 
 Document.prototype.flush = function flush() {
+    this.redraw();
     // No-op (for console only)
 };
 
@@ -69,6 +71,7 @@ Document.prototype.pardon = function pardon() {
 };
 
 Document.prototype.display = function display() {
+    this.redraw();
     this.container.style.opacity = 0;
     this.container.style.transform = 'translateX(2ex)';
     this.parent.appendChild(this.container);
