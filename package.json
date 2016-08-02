@@ -1,11 +1,11 @@
 {
   "name": "journey.aelf.land",
   "version": "0.0.0",
-  "description": "A journey through Aelfland",
+  "description": "A Journey through Aelfland",
   "main": "index.js",
   "scripts": {
     "test": "false",
-    "build": "inkblot journey.ink -j > journey.json",
+    "build": "kni journey.kni -j > journey.json",
     "bundle": "bundle index.js > bundle.js"
   },
   "translators": {
@@ -23,8 +23,9 @@
   "homepage": "https://github.com/kriskowal/journey.aelf.land#readme",
   "dependencies": {
     "blick": "^1.1.0",
-    "inkblot": "^2.2.0",
+    "kni": "^1.0.0-1",
     "ndim": "^1.5.1",
     "system": "^1.0.6"
-  }
+  },
+  "private": true
 }

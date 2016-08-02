@@ -18,8 +18,9 @@ function Heavens(body, scope) {
     this.animator.requestAnimation();
     this.window = scope.window;
     this.document = this.window.document;
-    this.day = 0.5 / 14;
-    this.day$ = 0;
+    this.day = null; // actual time
+    this.day$ = null; // last actual time
+    this.day$$ = null; // last drawn position
     this.month = 0.5;
     this.phase = 'day';
     this.sheet = null;
@@ -27,16 +28,26 @@ function Heavens(body, scope) {
 }
 
 Heavens.prototype.setSheet = function (sheet) {
-    sheet.insertRule('body { color: black }', 0);
+    sheet.insertRule('body, a { color: black }', 0);
     this.sheet = sheet;
 };
 
 Heavens.prototype.animate = function animate() {
+    if (this.day == null) {
+        return;
+    }
+
+    if (this.day$ == null) {
+        this.day$ = this.day;
+        this.redraw();
+        return;
+    }
+
     var r = 0.99;
     this.day$ = this.day$ * r + this.day * (1 - r);
 
     var d = this.day - this.day$;
-    if (Math.abs(d) > 0.001) {
+    if (Math.abs(d) >= 0.0001) {
         this.redraw();
     }
 };
@@ -86,9 +97,9 @@ Heavens.prototype.redraw = function redraw() {
     if (phase !== this.phase) {
         this.sheet.deleteRule(0);
         if (day < 0.5) {
-            this.sheet.insertRule('body { color: black; }', 0);
+            this.sheet.insertRule('body, a { color: black; }', 0);
         } else {
-            this.sheet.insertRule('body { color: hsla(240, 25.00%, 83.00%, 1); text-shadow: black 0 0 5pt; }', 0);
+            this.sheet.insertRule('body, a { color: hsla(240, 25.00%, 83.00%, 1); text-shadow: black 0 0 5pt; }', 0);
         }
         this.phase = phase;
     }

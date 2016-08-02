@@ -2,21 +2,25 @@
 
 module.exports = Document;
 
-function Document(element, redraw) {
+function Document(element, createPage) {
     var self = this;
     this.document = element.ownerDocument;
     this.parent = element;
-    this.container = null;
-    this.element = null;
+    this.frame = null;
+    this.body = null;
+    this.afterBody = null;
     this.engine = null;
     this.carry = '';
     this.cursor = null;
+    this.cursorParent = null;
+    this.afterCursor = null;
     this.next = null;
+    this.optionIndex = 0;
     this.options = null;
     this.p = false;
     this.br = false;
     this.onclick = onclick;
-    this.redraw = redraw;
+    this.createPage = createPage || this.createPage;
     function onclick(event) {
         self.answer(event.target.number);
     }
@@ -24,18 +28,22 @@ function Document(element, redraw) {
 }
 
 Document.prototype.write = function write(lift, text, drop) {
-    var document = this.element.ownerDocument;
+    var document = this.document;
+    lift = this.carry || lift;
     if (this.p) {
         this.cursor = document.createElement("p");
-        this.element.insertBefore(this.cursor, this.options);
+        this.cursorParent.insertBefore(this.cursor, this.afterCursor);
         this.p = false;
         this.br = false;
+        lift = '';
     }
     if (this.br) {
         this.cursor.appendChild(document.createElement("br"));
         this.br = false;
+        lift = '';
     }
-    this.cursor.appendChild(document.createTextNode((this.carry || lift) + text));
+    // TODO merge with prior text node
+    this.cursor.appendChild(document.createTextNode(lift + text));
     this.carry = drop;
 };
 
@@ -47,78 +55,79 @@ Document.prototype.paragraph = function paragraph() {
     this.p = true;
 };
 
-Document.prototype.option = function option(number, label) {
-    var document = this.element.ownerDocument;
+Document.prototype.startOption = function startOption() {
+    this.optionIndex++;
+    var document = this.document;
     var tr = document.createElement("tr");
     this.options.appendChild(tr);
     var th = document.createElement("th");
     tr.appendChild(th);
-    th.innerText = number + '.';
+    th.innerText = this.optionIndex + '.';
     var td = document.createElement("td");
-    td.innerText = label;
-    td.number = number;
+    td.number = this.optionIndex;
     td.onclick = this.onclick;
     tr.appendChild(td);
+
+    this.cursor = td;
+    this.cursorParent = td;
+    this.afterCursor = null;
+    this.p = false;
+    this.br = false;
+    this.carry = '';
+};
+
+Document.prototype.stopOption = function stopOption() {
+    this.cursorParent = this.body;
+    this.afterCursor = this.afterBody;
+    this.p = false;
+    this.br = false;
+    this.carry = '';
 };
 
 Document.prototype.flush = function flush() {
-    this.redraw();
     // No-op (for console only)
 };
 
 Document.prototype.pardon = function pardon() {
-    this.options.innerHTML = '';
+    // No-op (for console only)
 };
 
 Document.prototype.display = function display() {
-    this.redraw();
-    this.container.style.opacity = 0;
-    this.container.style.transform = 'translateX(2ex)';
-    this.parent.appendChild(this.container);
+    this.frame.style.opacity = 0;
+    this.frame.style.transform = 'translateX(2ex)';
+    this.parent.appendChild(this.frame);
 
     // TODO not this
-    var container = this.container;
+    var frame = this.frame;
     setTimeout(function () {
-        container.style.opacity = 1;
-        container.style.transform = 'translateX(0)';
+        frame.style.opacity = 1;
+        frame.style.transform = 'translateX(0)';
     }, 10);
 };
 
 Document.prototype.clear = function clear() {
-    if (this.container) {
-        this.container.style.opacity = 0;
-        this.container.style.transform = 'translateX(-2ex)';
-        this.container.addEventListener("transitionend", this);
+    if (this.frame) {
+        this.frame.style.opacity = 0;
+        this.frame.style.transform = 'translateX(-2ex)';
+        this.frame.addEventListener("transitionend", this);
     }
-
-    this.container = this.document.createElement("div");
-    this.container.classList.add("parent");
-    this.container.style.opacity = 0;
-    var child = this.document.createElement("div");
-    child.classList.add("child");
-    this.container.appendChild(child);
-    var outer = this.document.createElement("outer");
-    outer.classList.add("outer");
-    child.appendChild(outer);
-    this.element = this.document.createElement("inner");
-    this.element.classList.add("inner");
-    outer.appendChild(this.element);
-    this.options = this.document.createElement("table");
-    this.element.appendChild(this.options);
-
+    this.createPage(this.document, this);
     this.cursor = null;
+    this.cursorParent = this.body;
+    this.afterCursor = this.afterBody;
     this.br = false;
     this.p = true;
     this.carry = '';
+    this.optionIndex = 0;
 };
 
 Document.prototype.handleEvent = function handleEvent(event) {
-    if (event.target.parentNode !== this.parent) {
+    if (event.target.parentNode === this.parent) {
         this.parent.removeChild(event.target);
     }
 };
 
-Document.prototype.question = function question() {
+Document.prototype.ask = function ask() {
 };
 
 Document.prototype.answer = function answer(text) {
@@ -126,4 +135,22 @@ Document.prototype.answer = function answer(text) {
 };
 
 Document.prototype.close = function close() {
+};
+
+Document.prototype.createPage = function createPage(document) {
+    this.frame = document.createElement("div");
+    this.frame.classList.add("kni-frame");
+    this.frame.style.opacity = 0;
+    var outer = document.createElement("div");
+    outer.classList.add("kni-frame-1");
+    this.frame.appendChild(outer);
+    var inner = document.createElement("div");
+    inner.classList.add("kni-frame-2");
+    outer.appendChild(inner);
+    this.body = document.createElement("div");
+    this.body.classList.add("kni-body");
+    inner.appendChild(this.body);
+    this.options = document.createElement("table");
+    this.body.appendChild(this.options);
+    this.afterBody = this.options;
 };

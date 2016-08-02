@@ -1,28 +1,47 @@
-body {
-    font-family: Libre Baskerville, Book Antiqua, serif;
-    font-size: 200%;
-    transition: color 1s;
+
+@media handheld {
+    body {
+        font-size: 100%;
+    }
 }
 
-.parent {
+body {
+    font-family: Libre Baskerville, Book Antiqua, serif;
+    font-size: 150%;
+    transition: color 1s;
+    overflow: hidden;
+}
+
+.body {
     position: absolute;
-    display: table;
     top: 0;
+    bottom: 1.5em;
     left: 0;
+    right: 0;
+}
+
+.kni-frame {
+    position: absolute;
     height: 100%;
     width: 100%;
-    outline: dotted blue 1px;
+    overflow-y: scroll;
     transition: transform 1s ease, opacity 1s ease-out;
 }
 
-.child {
+.kni-frame-a {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.kni-frame-b {
     display: table-cell;
     vertical-align: middle;
     padding: 1em;
     width: 40ex;
 }
 
-.outer {
+.kni-frame-c {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -30,7 +49,7 @@ body {
     align-items: flex-start;
 }
 
-.inner {
+.kni-body {
     display: flex-item;
     flex: 0 1 auto;
     max-width: 40ex;
@@ -51,19 +70,20 @@ li {
 }
 
 a {
-    color: hsla(240, 42.00%, 25.00%, 1);
+    color: inherit;
+    font-family: 200%;
 }
 
 a:link {
-    color: hsla(240, 42.00%, 25.00%, 1);
+    color: inherit;
 }
 
 a:hover {
-    color: hsla(240, 42.00%, 25.00%, 1);
+    color: inherit;
 }
 
 a:visited {
-    color: hsla(240, 42.00%, 25.00%, 1);
+    color: inherit;
 }
 
 .about {
@@ -72,4 +92,24 @@ a:visited {
     bottom: 0;
     right: 0;
     margin: 10px;
+    z-index: 100;
+}
+
+.reset {
+    position: absolute;
+    height: 1em;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+}
+
+.heavens {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
 }

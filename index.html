@@ -1,15 +1,15 @@
 <!doctype html>
 <html>
     <head>
-        <title>A Journey Through Aelfland</title>
+        <title>A Journey Through Ælfland</title>
         <meta charset="utf8">
         <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=0.75">
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <style id="style"></style>
         <svg
+            class="heavens"
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -18,7 +18,7 @@
             xmlns:xlink="http://www.w3.org/1999/xlink"
             width="2000"
             height="1000"
-            style="height: 100%; width: 100%; position: absolute; top: 0; left: 0"
+            style="height: 100%; width: 100%; position: fixed; top: 0; left: 0"
             xmlns="http://www.w3.org/2000/svg" version="1.1"
         >
             <defs
@@ -679,6 +679,10 @@
                 </g>
             </g>
         </svg>
+        <div class="reset"><a href="#">reset</a></div>
+        <div class="about"><a href="https://github.com/kriskowal/journey.aelf.land/blob/master/journey.kni">journey.kni</a></div>
+        <style id="style"></style>
+        <div class="body"></div>
         <script src="node_modules/system/boot.js" data-import="./index"></script>
     </body>
 </html>

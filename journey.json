@@ -1,1667 +1,1939 @@
 {
     "start": {
-        "type": "set",
-        "variable": "hour",
-        "value": 0,
-        "next": "start.1"
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "t"
+        ],
+        "next": "start.1",
+        "position": "2:3"
     },
     "start.1": {
-        "type": "set",
-        "variable": "x",
-        "value": 0,
-        "next": "start.2"
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "x"
+        ],
+        "next": "start.2",
+        "position": "3:3"
     },
     "start.2": {
-        "type": "set",
-        "variable": "day",
-        "value": 0,
-        "next": "start.3"
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "y"
+        ],
+        "next": "start.3",
+        "position": "4:3"
     },
     "start.3": {
-        "type": "set",
-        "variable": "hunger",
-        "value": 0,
-        "next": "start.4"
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "from.t"
+        ],
+        "next": "start.4",
+        "position": "5:3"
     },
     "start.4": {
-        "type": "set",
-        "variable": "thirst",
-        "value": 0,
-        "next": "start.5"
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "from.x"
+        ],
+        "next": "start.5",
+        "position": "6:3"
     },
     "start.5": {
-        "type": "set",
-        "variable": "fish",
-        "value": 0,
-        "next": "start.6"
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "from.y"
+        ],
+        "next": "start.6",
+        "position": "64:3"
     },
     "start.6": {
-        "type": "set",
-        "variable": "deer",
-        "value": 0,
-        "next": "start.7"
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "river"
+        ],
+        "next": "start.7",
+        "position": "9:3"
     },
     "start.7": {
-        "type": "set",
-        "variable": "water",
-        "value": 0,
-        "next": "start.8"
+        "type": "move",
+        "source": [
+            "val",
+            1
+        ],
+        "target": [
+            "get",
+            "forest"
+        ],
+        "next": "start.8",
+        "position": "10:3"
     },
     "start.8": {
-        "type": "set",
-        "variable": "empty",
-        "value": 2,
-        "next": "start.9"
+        "type": "move",
+        "source": [
+            "val",
+            2
+        ],
+        "target": [
+            "get",
+            "clearing"
+        ],
+        "next": "start.9",
+        "position": "11:3"
     },
     "start.9": {
-        "type": "set",
-        "variable": "river",
-        "value": 0,
-        "next": "start.10"
+        "type": "move",
+        "source": [
+            "val",
+            3
+        ],
+        "target": [
+            "get",
+            "meadow"
+        ],
+        "next": "start.10",
+        "position": "12:3"
     },
     "start.10": {
-        "type": "set",
-        "variable": "game",
-        "value": 0,
-        "next": "start.11"
+        "type": "move",
+        "source": [
+            "val",
+            4
+        ],
+        "target": [
+            "get",
+            "mountains"
+        ],
+        "next": "start.11",
+        "position": "14:3"
     },
     "start.11": {
-        "type": "text",
-        "text": "You begin your journey at",
-        "lift": "",
-        "drop": " ",
-        "next": "start.12"
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "thirst"
+        ],
+        "next": "start.12",
+        "position": "15:3"
     },
     "start.12": {
-        "type": "call",
-        "label": "time",
-        "branch": "time",
-        "next": "start.13"
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "water"
+        ],
+        "next": "start.13",
+        "position": "16:3"
     },
     "start.13": {
-        "type": "text",
-        "text": ".",
-        "lift": "",
-        "drop": " ",
-        "next": "journey"
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "hunger"
+        ],
+        "next": "start.14",
+        "position": "17:3"
+    },
+    "start.14": {
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "fish"
+        ],
+        "next": "start.15",
+        "position": "18:3"
+    },
+    "start.15": {
+        "type": "move",
+        "source": [
+            "val",
+            0
+        ],
+        "target": [
+            "get",
+            "deer"
+        ],
+        "next": "start.16",
+        "position": "19:3"
+    },
+    "start.16": {
+        "type": "move",
+        "source": [
+            "val",
+            20
+        ],
+        "target": [
+            "get",
+            "bottle"
+        ],
+        "next": "start.17",
+        "position": "20:3"
+    },
+    "start.17": {
+        "type": "move",
+        "source": [
+            "val",
+            20
+        ],
+        "target": [
+            "get",
+            "pack"
+        ],
+        "next": "journey",
+        "position": "22:3"
     },
     "journey": {
-        "type": "jge",
-        "variable": "thirst",
-        "value": 7,
-        "branch": "journey.3",
-        "next": "journey.1"
+        "type": "text",
+        "text": "You begin your journey at",
+        "lift": " ",
+        "drop": " ",
+        "next": "journey.1",
+        "position": "23:3"
     },
     "journey.1": {
+        "type": "call",
+        "branch": "time",
+        "args": [],
+        "next": "journey.2",
+        "position": "23:3"
+    },
+    "journey.2": {
         "type": "text",
-        "text": "However, you succumb to your thirst.",
-        "lift": " ",
+        "text": ".",
+        "lift": "",
         "drop": " ",
-        "next": "fin"
+        "next": "journey.3",
+        "position": "24:3"
     },
     "journey.3": {
-        "type": "jge",
-        "variable": "hunger",
-        "value": 7,
-        "branch": "journey.6",
-        "next": "journey.4"
-    },
-    "journey.4": {
-        "type": "text",
-        "text": "However, You succumb to your hunger.",
-        "lift": " ",
-        "drop": " ",
-        "next": "fin"
-    },
-    "journey.6": {
-        "type": "call",
-        "label": "setting",
-        "branch": "setting",
-        "next": "journey.7"
-    },
-    "journey.7": {
-        "type": "paragraph",
-        "next": "journey.8"
-    },
-    "journey.8": {
-        "type": "call",
-        "label": "status",
-        "branch": "status",
-        "next": "journey.9"
-    },
-    "journey.9": {
-        "type": "call",
-        "label": "inventory",
-        "branch": "inventory",
-        "next": "journey.10"
-    },
-    "journey.10": {
-        "type": "option",
-        "label": "Venture east.",
-        "keywords": [],
-        "branch": "journey.10.1",
-        "next": "journey.11"
-    },
-    "journey.10.1": {
-        "type": "text",
-        "text": "You v",
-        "lift": "",
-        "drop": "",
-        "next": "journey.10.2"
-    },
-    "journey.10.2": {
-        "type": "text",
-        "text": "enture east.",
-        "lift": "",
-        "drop": " ",
-        "next": "journey.10.3"
-    },
-    "journey.10.3": {
-        "type": "add",
-        "variable": "x",
-        "value": 1,
-        "next": "journey.10.4"
-    },
-    "journey.10.4": {
-        "type": "call",
-        "label": "tick",
-        "branch": "tick",
-        "next": "journey.10.5"
-    },
-    "journey.10.5": {
-        "type": "call",
-        "label": "now",
-        "branch": "now",
-        "next": "journey.10.6"
-    },
-    "journey.10.6": {
-        "type": "call",
-        "label": "travel",
-        "branch": "travel",
-        "next": "journey"
-    },
-    "journey.11": {
-        "type": "jgt",
-        "variable": "x",
-        "value": 0,
-        "branch": "journey.13",
-        "next": "journey.12"
-    },
-    "journey.12": {
-        "type": "option",
-        "label": "Return west.",
-        "keywords": [],
-        "branch": "journey.12.1",
-        "next": "journey.13"
-    },
-    "journey.12.1": {
-        "type": "text",
-        "text": "You r",
-        "lift": "",
-        "drop": "",
-        "next": "journey.12.2"
-    },
-    "journey.12.2": {
-        "type": "text",
-        "text": "eturn west.",
-        "lift": "",
-        "drop": " ",
-        "next": "journey.12.3"
-    },
-    "journey.12.3": {
-        "type": "sub",
-        "variable": "x",
-        "value": 1,
-        "next": "journey.12.4"
-    },
-    "journey.12.4": {
-        "type": "call",
-        "label": "tick",
-        "branch": "tick",
-        "next": "journey.12.5"
-    },
-    "journey.12.5": {
-        "type": "call",
-        "label": "now",
-        "branch": "now",
-        "next": "journey"
-    },
-    "journey.13": {
-        "type": "jnz",
-        "variable": "river",
-        "branch": "journey.17",
-        "next": "journey.14"
-    },
-    "journey.14": {
-        "type": "jz",
-        "variable": "thirst",
-        "branch": "journey.17",
-        "next": "journey.15"
-    },
-    "journey.15": {
-        "type": "jz",
-        "variable": "water",
-        "branch": "journey.17",
-        "next": "journey.16"
-    },
-    "journey.16": {
-        "type": "option",
-        "label": "Drink from your stored water.",
-        "keywords": [],
-        "branch": "journey.16.1",
-        "next": "journey.17"
-    },
-    "journey.16.1": {
-        "type": "text",
-        "text": "You d",
-        "lift": "",
-        "drop": "",
-        "next": "journey.16.2"
-    },
-    "journey.16.2": {
-        "type": "text",
-        "text": "rink from your stored water.",
-        "lift": "",
-        "drop": " ",
-        "next": "journey.16.3"
-    },
-    "journey.16.3": {
-        "type": "sub",
-        "variable": "thirst",
-        "value": 1,
-        "next": "journey.16.4"
-    },
-    "journey.16.4": {
-        "type": "sub",
-        "variable": "water",
-        "value": 1,
-        "next": "journey.16.5"
-    },
-    "journey.16.5": {
-        "type": "add",
-        "variable": "empty",
-        "value": 1,
-        "next": "journey"
-    },
-    "journey.17": {
-        "type": "jz",
-        "variable": "river",
-        "branch": "journey.20",
-        "next": "journey.18"
-    },
-    "journey.18": {
-        "type": "option",
-        "label": "Rest here, drink your fill, and refill your bottles.",
-        "keywords": [],
-        "branch": "journey.18.1",
-        "next": "journey.19"
-    },
-    "journey.18.1": {
-        "type": "text",
-        "text": "You rest here",
-        "lift": "",
-        "drop": "",
-        "next": "journey.18.2"
-    },
-    "journey.18.2": {
         "type": "switch",
-        "variable": "empty",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "journey.18.2.1",
-            "journey.18.2.2"
-        ]
-    },
-    "journey.18.2.1": {
-        "type": "goto",
-        "next": "journey.18.3"
-    },
-    "journey.18.2.2": {
-        "type": "text",
-        "text": "filling your bottles of water",
-        "lift": " ",
-        "drop": "",
-        "next": "journey.18.2.2.1"
-    },
-    "journey.18.2.2.1": {
-        "type": "call",
-        "label": "fill",
-        "branch": "fill",
-        "next": "journey.18.2.2.2"
-    },
-    "journey.18.2.2.2": {
-        "type": "switch",
-        "variable": "thirst",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "journey.18.2.2.2.1",
-            "journey.18.2.2.2.2",
-            "journey.18.2.2.2.3"
-        ]
-    },
-    "journey.18.2.2.2.1": {
-        "type": "goto",
-        "next": "journey.18.3"
-    },
-    "journey.18.2.2.2.2": {
-        "type": "text",
-        "text": "and",
-        "lift": " ",
-        "drop": " ",
-        "next": "journey.18.3"
-    },
-    "journey.18.2.2.2.3": {
-        "type": "goto",
-        "next": "journey.18.3"
-    },
-    "journey.18.3": {
-        "type": "switch",
-        "variable": "thirst",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "journey.18.3.1",
-            "journey.18.3.2"
-        ]
-    },
-    "journey.18.3.1": {
-        "type": "goto",
-        "next": "journey.18.4"
-    },
-    "journey.18.3.2": {
-        "type": "text",
-        "text": "drinking your fill from the stream",
-        "lift": " ",
-        "drop": "",
-        "next": "journey.18.3.2.1"
-    },
-    "journey.18.3.2.1": {
-        "type": "set",
-        "variable": "thirst",
-        "value": 0,
-        "next": "journey.18.4"
-    },
-    "journey.18.4": {
-        "type": "text",
-        "text": ".",
-        "lift": "",
-        "drop": " ",
-        "next": "journey"
-    },
-    "journey.19": {
-        "type": "option",
-        "label": "Try fishing.",
-        "keywords": [],
-        "branch": "journey.19.1",
-        "next": "journey.20"
-    },
-    "journey.19.1": {
-        "type": "call",
-        "label": "fishing",
-        "branch": "fishing",
-        "next": "journey"
-    },
-    "journey.20": {
-        "type": "jz",
-        "variable": "hunger",
-        "branch": "journey.23",
-        "next": "journey.21"
-    },
-    "journey.21": {
-        "type": "jz",
-        "variable": "fish",
-        "branch": "journey.23",
-        "next": "journey.22"
-    },
-    "journey.22": {
-        "type": "option",
-        "label": "Eat one of your fish.",
-        "keywords": [],
-        "branch": "journey.22.1",
-        "next": "journey.23"
-    },
-    "journey.22.1": {
-        "type": "text",
-        "text": "You e",
-        "lift": "",
-        "drop": "",
-        "next": "journey.22.2"
-    },
-    "journey.22.2": {
-        "type": "text",
-        "text": "at one of your fish.",
-        "lift": "",
-        "drop": " ",
-        "next": "journey.22.3"
-    },
-    "journey.22.3": {
-        "type": "sub",
-        "variable": "fish",
-        "value": 1,
-        "next": "journey.22.4"
-    },
-    "journey.22.4": {
-        "type": "sub",
-        "variable": "hunger",
-        "value": 1,
-        "next": "journey"
-    },
-    "journey.23": {
-        "type": "jz",
-        "variable": "hunger",
-        "branch": "journey.26",
-        "next": "journey.24"
-    },
-    "journey.24": {
-        "type": "jz",
-        "variable": "deer",
-        "branch": "journey.26",
-        "next": "journey.25"
-    },
-    "journey.25": {
-        "type": "option",
-        "label": "Eat a meal of smoked venison.",
-        "keywords": [],
-        "branch": "journey.25.1",
-        "next": "journey.26"
-    },
-    "journey.25.1": {
-        "type": "text",
-        "text": "You e",
-        "lift": "",
-        "drop": "",
-        "next": "journey.25.2"
-    },
-    "journey.25.2": {
-        "type": "text",
-        "text": "at a meal of smoked venison.",
-        "lift": "",
-        "drop": " ",
-        "next": "journey.25.3"
-    },
-    "journey.25.3": {
-        "type": "sub",
-        "variable": "deer",
-        "value": 1,
-        "next": "journey.25.4"
-    },
-    "journey.25.4": {
-        "type": "sub",
-        "variable": "hunger",
-        "value": 1,
-        "next": "journey"
-    },
-    "journey.26": {
-        "type": "prompt"
-    },
-    "travel": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "travel.1"
-    },
-    "travel.1": {
-        "type": "text",
-        "text": "You have",
-        "lift": " ",
-        "drop": " ",
-        "next": "travel.2"
-    },
-    "travel.2": {
-        "type": "switch",
-        "variable": "travel.2",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "travel.2.1",
-            "travel.2.2",
-            "travel.2.3",
-            "travel.2.4"
-        ]
-    },
-    "travel.2.1": {
-        "type": "text",
-        "text": "come",
-        "lift": "",
-        "drop": " ",
-        "next": "travel.3"
-    },
-    "travel.2.2": {
-        "type": "text",
-        "text": "traveled",
-        "lift": "",
-        "drop": " ",
-        "next": "travel.3"
-    },
-    "travel.2.3": {
-        "type": "text",
-        "text": "journeyed",
-        "lift": "",
-        "drop": " ",
-        "next": "travel.3"
-    },
-    "travel.2.4": {
-        "type": "text",
-        "text": "ventured",
-        "lift": "",
-        "drop": " ",
-        "next": "travel.3"
-    },
-    "travel.3": {
-        "type": "print",
-        "variable": "x",
-        "next": "travel.4"
-    },
-    "travel.4": {
-        "type": "text",
-        "text": "league",
-        "lift": " ",
-        "drop": "",
-        "next": "travel.5"
-    },
-    "travel.5": {
-        "type": "switch",
-        "variable": "x",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "travel.5.1",
-            "travel.5.2",
-            "travel.5.3"
-        ]
-    },
-    "travel.5.1": {
-        "type": "text",
-        "text": "s",
-        "lift": "",
-        "drop": "",
-        "next": "travel.6"
-    },
-    "travel.5.2": {
-        "type": "goto",
-        "next": "travel.6"
-    },
-    "travel.5.3": {
-        "type": "text",
-        "text": "s",
-        "lift": "",
-        "drop": "",
-        "next": "travel.6"
-    },
-    "travel.6": {
-        "type": "text",
-        "text": ".",
-        "lift": "",
-        "drop": " ",
-        "next": null
-    },
-    "fishing": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "fishing.1"
-    },
-    "fishing.1": {
-        "type": "text",
-        "text": "You spread out your hooks and line and settle in for a bit of fishing.",
-        "lift": " ",
-        "drop": " ",
-        "next": "fishing.2"
-    },
-    "fishing.2": {
-        "type": "jz",
-        "variable": "thirst",
-        "branch": "fish.again",
-        "next": "fishing.3"
-    },
-    "fishing.3": {
-        "type": "set",
-        "variable": "thirst",
-        "value": 0,
-        "next": "fishing.4"
-    },
-    "fishing.4": {
-        "type": "text",
-        "text": "While your line bobs, you take a spare moment to quench your thirst from the running water.",
-        "lift": " ",
-        "drop": " ",
-        "next": "fish.again"
-    },
-    "fish.again": {
-        "type": "call",
-        "label": "reset.fish.chances",
-        "branch": "reset.fish.chances",
-        "next": "fish.loop"
-    },
-    "fish.loop": {
-        "type": "jz",
-        "variable": "fish.chances",
-        "branch": "done.fishing",
-        "next": "fish.loop.1"
-    },
-    "fish.loop.1": {
-        "type": "sub",
-        "variable": "fish.chances",
-        "value": 1,
-        "next": "fish.loop.2"
-    },
-    "fish.loop.2": {
-        "type": "switch",
-        "variable": "fish.loop.2",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "fish.loop.2.1",
-            "fish.loop.2.2",
-            "fish.loop.2.3"
-        ]
-    },
-    "fish.loop.2.1": {
-        "type": "goto",
-        "next": "fish.loop"
-    },
-    "fish.loop.2.2": {
-        "type": "goto",
-        "next": "fish.loop"
-    },
-    "fish.loop.2.3": {
-        "type": "goto",
-        "next": "done.fishing"
-    },
-    "done.fishing": {
-        "type": "jz",
-        "variable": "fish.chances",
-        "branch": "done.fishing.7",
-        "next": "done.fishing.1"
-    },
-    "done.fishing.1": {
-        "type": "switch",
-        "variable": "done.fishing.1",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "done.fishing.1.1",
-            "done.fishing.1.2",
-            "done.fishing.1.3"
-        ]
-    },
-    "done.fishing.1.1": {
-        "type": "text",
-        "text": "A fish wanders by and tentatively nibbles your line.",
-        "lift": "",
-        "drop": " ",
-        "next": "done.fishing.2"
-    },
-    "done.fishing.1.2": {
-        "type": "text",
-        "text": "You feel a nibble on your line.",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.2"
-    },
-    "done.fishing.1.3": {
-        "type": "text",
-        "text": "Out of the blue, you feel a tug and your rod dips toward the water.",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.2"
-    },
-    "done.fishing.2": {
-        "type": "switch",
-        "variable": "done.fishing.2",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "done.fishing.2.1",
-            "done.fishing.2.2"
-        ]
-    },
-    "done.fishing.2.1": {
-        "type": "text",
-        "text": "You have",
-        "lift": "",
-        "drop": " ",
-        "next": "done.fishing.2.1.1"
-    },
-    "done.fishing.2.1.1": {
-        "type": "switch",
-        "variable": "done.fishing.2.1.1",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "done.fishing.2.1.1.1",
-            "done.fishing.2.1.1.2"
-        ]
-    },
-    "done.fishing.2.1.1.1": {
-        "type": "text",
-        "text": "him",
-        "lift": "",
-        "drop": "",
-        "next": "done.fishing.2.1.2"
-    },
-    "done.fishing.2.1.1.2": {
-        "type": "text",
-        "text": "her",
-        "lift": "",
-        "drop": "",
-        "next": "done.fishing.2.1.2"
-    },
-    "done.fishing.2.1.2": {
-        "type": "text",
-        "text": "on line and drag the fish",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.2.1.3"
-    },
-    "done.fishing.2.1.3": {
-        "type": "switch",
-        "variable": "done.fishing.2.1.3",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "done.fishing.2.1.3.1",
-            "done.fishing.2.1.3.2"
-        ]
-    },
-    "done.fishing.2.1.3.1": {
-        "type": "text",
-        "text": "in",
-        "lift": "",
-        "drop": "",
-        "next": "done.fishing.2.1.4"
-    },
-    "done.fishing.2.1.3.2": {
-        "type": "text",
-        "text": "to shore",
-        "lift": "",
-        "drop": "",
-        "next": "done.fishing.2.1.4"
-    },
-    "done.fishing.2.1.4": {
-        "type": "text",
-        "text": "!",
-        "lift": "",
-        "drop": " ",
-        "next": "done.fishing.3"
-    },
-    "done.fishing.2.2": {
-        "type": "text",
-        "text": "The fish drags your line and you pull",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.2.2.1"
-    },
-    "done.fishing.2.2.1": {
-        "type": "switch",
-        "variable": "done.fishing.2.2.1",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "done.fishing.2.2.1.1",
-            "done.fishing.2.2.1.2"
-        ]
-    },
-    "done.fishing.2.2.1.1": {
-        "type": "text",
-        "text": "him",
-        "lift": "",
-        "drop": "",
-        "next": "done.fishing.2.2.2"
-    },
-    "done.fishing.2.2.1.2": {
-        "type": "text",
-        "text": "her",
-        "lift": "",
-        "drop": "",
-        "next": "done.fishing.2.2.2"
-    },
-    "done.fishing.2.2.2": {
-        "type": "text",
-        "text": "to the shore!",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.3"
-    },
-    "done.fishing.3": {
-        "type": "add",
-        "variable": "fish",
-        "value": 1,
-        "next": "done.fishing.4"
-    },
-    "done.fishing.4": {
-        "type": "text",
-        "text": "You now have",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.5"
-    },
-    "done.fishing.5": {
-        "type": "print",
-        "variable": "fish",
-        "next": "done.fishing.6"
-    },
-    "done.fishing.6": {
-        "type": "text",
-        "text": "fish.",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.7"
-    },
-    "done.fishing.7": {
-        "type": "jnz",
-        "variable": "fish.chances",
-        "branch": "done.fishing.9",
-        "next": "done.fishing.8"
-    },
-    "done.fishing.8": {
-        "type": "switch",
-        "variable": "done.fishing.8",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "done.fishing.8.1",
-            "done.fishing.8.2",
-            "done.fishing.8.3",
-            "done.fishing.8.4"
-        ]
-    },
-    "done.fishing.8.1": {
-        "type": "text",
-        "text": "Time passes but no fish have bitten.",
-        "lift": "",
-        "drop": " ",
-        "next": "done.fishing.9"
-    },
-    "done.fishing.8.2": {
-        "type": "text",
-        "text": "You may have felt a nibble, but the time is lost.",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.9"
-    },
-    "done.fishing.8.3": {
-        "type": "text",
-        "text": "The fish seem shy this hour.",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.9"
-    },
-    "done.fishing.8.4": {
-        "type": "text",
-        "text": "After a while, a fish wallows by your hook but pays it no heed.",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.9"
-    },
-    "done.fishing.9": {
-        "type": "paragraph",
-        "next": "done.fishing.10"
-    },
-    "done.fishing.10": {
-        "type": "call",
-        "label": "tick",
-        "branch": "tick",
-        "next": "done.fishing.11"
-    },
-    "done.fishing.11": {
-        "type": "call",
-        "label": "now",
-        "branch": "now",
-        "next": "done.fishing.12"
-    },
-    "done.fishing.12": {
-        "type": "call",
-        "label": "status",
-        "branch": "status",
-        "next": "done.fishing.13"
-    },
-    "done.fishing.13": {
-        "type": "call",
-        "label": "inventory",
-        "branch": "inventory",
-        "next": "done.fishing.14"
-    },
-    "done.fishing.14": {
-        "type": "option",
-        "label": "Try again.",
-        "keywords": [],
-        "branch": "done.fishing.16",
-        "next": "done.fishing.15"
-    },
-    "done.fishing.15": {
-        "type": "option",
-        "label": "Perhaps another time.",
-        "keywords": [],
-        "branch": "done.fishing.15.1",
-        "next": "done.fishing.16"
-    },
-    "done.fishing.15.1": {
-        "type": "text",
-        "text": "You pack up and return to the trail.",
-        "lift": " ",
-        "drop": " ",
-        "next": null
-    },
-    "done.fishing.16": {
-        "type": "switch",
-        "variable": "done.fishing.16",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "done.fishing.16.1",
-            "done.fishing.16.2",
-            "done.fishing.16.3",
-            "done.fishing.16.4"
-        ]
-    },
-    "done.fishing.16.1": {
-        "type": "text",
-        "text": "You bait your hook with a worm and toss it out again.",
-        "lift": "",
-        "drop": " ",
-        "next": "fish.again"
-    },
-    "done.fishing.16.2": {
-        "type": "text",
-        "text": "You try a fresh worm you find in the loam.",
-        "lift": " ",
-        "drop": " ",
-        "next": "fish.again"
-    },
-    "done.fishing.16.3": {
-        "type": "text",
-        "text": "You cast your line off once",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.16.3.1"
-    },
-    "done.fishing.16.3.1": {
-        "type": "switch",
-        "variable": "done.fishing.16.3.1",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "done.fishing.16.3.1.1",
-            "done.fishing.16.3.1.2"
-        ]
-    },
-    "done.fishing.16.3.1.1": {
-        "type": "text",
-        "text": "again",
-        "lift": "",
-        "drop": "",
-        "next": "done.fishing.16.3.2"
-    },
-    "done.fishing.16.3.1.2": {
-        "type": "text",
-        "text": "more",
-        "lift": "",
-        "drop": "",
-        "next": "done.fishing.16.3.2"
-    },
-    "done.fishing.16.3.2": {
-        "type": "text",
-        "text": ".",
-        "lift": "",
-        "drop": " ",
-        "next": "fish.again"
-    },
-    "done.fishing.16.4": {
-        "type": "text",
-        "text": "You cast off once",
-        "lift": " ",
-        "drop": " ",
-        "next": "done.fishing.16.4.1"
-    },
-    "done.fishing.16.4.1": {
-        "type": "switch",
-        "variable": "done.fishing.16.4.1",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "done.fishing.16.4.1.1",
-            "done.fishing.16.4.1.2"
-        ]
-    },
-    "done.fishing.16.4.1.1": {
-        "type": "text",
-        "text": "again",
-        "lift": "",
-        "drop": "",
-        "next": "done.fishing.16.4.2"
-    },
-    "done.fishing.16.4.1.2": {
-        "type": "text",
-        "text": "more",
-        "lift": "",
-        "drop": "",
-        "next": "done.fishing.16.4.2"
-    },
-    "done.fishing.16.4.2": {
-        "type": "text",
-        "text": ".",
-        "lift": "",
-        "drop": " ",
-        "next": "fish.again"
-    },
-    "reset.fish.chances": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "reset.fish.chances.1"
-    },
-    "reset.fish.chances.1": {
-        "type": "set",
-        "variable": "fish.chances",
-        "value": 1,
-        "next": "reset.fish.chances.2"
-    },
-    "reset.fish.chances.2": {
-        "type": "switch",
-        "variable": "hour",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "reset.fish.chances.2.1",
-            "reset.fish.chances.2.2",
-            "reset.fish.chances.2.3",
-            "reset.fish.chances.2.4",
-            "reset.fish.chances.2.5",
-            "reset.fish.chances.2.6",
-            "reset.fish.chances.2.7",
-            "reset.fish.chances.2.8",
-            "reset.fish.chances.2.9",
-            "reset.fish.chances.2.10",
-            "reset.fish.chances.2.11",
-            "reset.fish.chances.2.12",
-            "reset.fish.chances.2.13",
-            "reset.fish.chances.2.14"
-        ]
-    },
-    "reset.fish.chances.2.1": {
-        "type": "set",
-        "variable": "fish.chances",
-        "value": 6,
-        "next": null
-    },
-    "reset.fish.chances.2.2": {
-        "type": "set",
-        "variable": "fish.chances",
-        "value": 3,
-        "next": null
-    },
-    "reset.fish.chances.2.3": {
-        "type": "goto",
-        "next": null
-    },
-    "reset.fish.chances.2.4": {
-        "type": "goto",
-        "next": null
-    },
-    "reset.fish.chances.2.5": {
-        "type": "goto",
-        "next": null
-    },
-    "reset.fish.chances.2.6": {
-        "type": "set",
-        "variable": "fish.chances",
-        "value": 3,
-        "next": null
-    },
-    "reset.fish.chances.2.7": {
-        "type": "set",
-        "variable": "fish.chances",
-        "value": 6,
-        "next": null
-    },
-    "reset.fish.chances.2.8": {
-        "type": "set",
-        "variable": "fish.chances",
-        "value": 6,
-        "next": null
-    },
-    "reset.fish.chances.2.9": {
-        "type": "set",
-        "variable": "fish.chances",
-        "value": 3,
-        "next": null
-    },
-    "reset.fish.chances.2.10": {
-        "type": "goto",
-        "next": null
-    },
-    "reset.fish.chances.2.11": {
-        "type": "goto",
-        "next": null
-    },
-    "reset.fish.chances.2.12": {
-        "type": "goto",
-        "next": null
-    },
-    "reset.fish.chances.2.13": {
-        "type": "set",
-        "variable": "fish.chances",
-        "value": 3,
-        "next": null
-    },
-    "reset.fish.chances.2.14": {
-        "type": "set",
-        "variable": "fish.chances",
-        "value": 6,
-        "next": null
-    },
-    "tick": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "tick.1"
-    },
-    "tick.1": {
-        "type": "add",
-        "variable": "hour",
-        "value": 1,
-        "next": "tick.2"
-    },
-    "tick.2": {
-        "type": "switch",
-        "variable": "hour",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "tick.2.1",
-            "tick.2.2",
-            "tick.2.3",
-            "tick.2.4",
-            "tick.2.5",
-            "tick.2.6",
-            "tick.2.7",
-            "tick.2.8",
-            "tick.2.9",
-            "tick.2.10",
-            "tick.2.11",
-            "tick.2.12",
-            "tick.2.13",
-            "tick.2.14"
-        ]
-    },
-    "tick.2.1": {
-        "type": "goto",
-        "next": "tick.3"
-    },
-    "tick.2.2": {
-        "type": "add",
-        "variable": "thirst",
-        "value": 1,
-        "next": "tick.3"
-    },
-    "tick.2.3": {
-        "type": "add",
-        "variable": "hunger",
-        "value": 1,
-        "next": "tick.3"
-    },
-    "tick.2.4": {
-        "type": "add",
-        "variable": "thirst",
-        "value": 1,
-        "next": "tick.3"
-    },
-    "tick.2.5": {
-        "type": "goto",
-        "next": "tick.3"
-    },
-    "tick.2.6": {
-        "type": "add",
-        "variable": "thirst",
-        "value": 1,
-        "next": "tick.3"
-    },
-    "tick.2.7": {
-        "type": "goto",
-        "next": "tick.3"
-    },
-    "tick.2.8": {
-        "type": "goto",
-        "next": "tick.3"
-    },
-    "tick.2.9": {
-        "type": "add",
-        "variable": "hunger",
-        "value": 1,
-        "next": "tick.3"
-    },
-    "tick.2.10": {
-        "type": "goto",
-        "next": "tick.3"
-    },
-    "tick.2.11": {
-        "type": "add",
-        "variable": "thirst",
-        "value": 1,
-        "next": "tick.3"
-    },
-    "tick.2.12": {
-        "type": "goto",
-        "next": "tick.3"
-    },
-    "tick.2.13": {
-        "type": "add",
-        "variable": "thirst",
-        "value": 1,
-        "next": "tick.3"
-    },
-    "tick.2.14": {
-        "type": "add",
-        "variable": "hunger",
-        "value": 1,
-        "next": "tick.3"
-    },
-    "tick.3": {
-        "type": "jge",
-        "variable": "hour",
-        "value": 14,
-        "branch": null,
-        "next": "tick.4"
-    },
-    "tick.4": {
-        "type": "set",
-        "variable": "hour",
-        "value": 0,
-        "next": "tick.5"
-    },
-    "tick.5": {
-        "type": "add",
-        "variable": "day",
-        "value": 1,
-        "next": null
-    },
-    "now": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "now.1"
-    },
-    "now.1": {
-        "type": "text",
-        "text": "The hour rolls on, now",
-        "lift": " ",
-        "drop": " ",
-        "next": "now.2"
-    },
-    "now.2": {
-        "type": "call",
-        "label": "time",
-        "branch": "time",
-        "next": "now.3"
-    },
-    "now.3": {
-        "type": "text",
-        "text": ".",
-        "lift": "",
-        "drop": " ",
-        "next": null
-    },
-    "setting": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "setting.1"
-    },
-    "setting.1": {
-        "type": "switch",
-        "variable": "x",
+        "expression": [
+            "#",
+            [
+                "get",
+                "x"
+            ],
+            [
+                "get",
+                "y"
+            ]
+        ],
+        "variable": null,
         "value": 0,
         "mode": "hash",
         "branches": [
-            "setting.1.1",
-            "setting.1.2",
-            "setting.1.3"
-        ]
+            "journey.3.1",
+            "journey.3.2",
+            "journey.3.3",
+            "journey.3.4",
+            "journey.3.5"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "25:3"
     },
-    "setting.1.1": {
-        "type": "call",
-        "label": "forest",
-        "branch": "forest",
-        "next": null
-    },
-    "setting.1.2": {
-        "type": "call",
-        "label": "clearing",
-        "branch": "clearing",
-        "next": null
-    },
-    "setting.1.3": {
-        "type": "call",
-        "label": "river",
-        "branch": "river",
-        "next": null
-    },
-    "forest": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "forest.1"
-    },
-    "forest.1": {
-        "type": "set",
-        "variable": "river",
-        "value": 0,
-        "next": "forest.2"
-    },
-    "forest.2": {
-        "type": "switch",
-        "variable": "forest.2",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "forest.2.1",
-            "forest.2.2",
-            "forest.2.3"
-        ]
-    },
-    "forest.2.1": {
-        "type": "text",
-        "text": "You find yourself in a copse of",
-        "lift": "",
-        "drop": " ",
-        "next": "forest.2.1.1"
-    },
-    "forest.2.1.1": {
-        "type": "call",
-        "label": "tree",
-        "branch": "tree",
-        "next": "forest.2.1.2"
-    },
-    "forest.2.1.2": {
-        "type": "text",
-        "text": "trees.",
-        "lift": " ",
-        "drop": " ",
-        "next": "forest.3"
-    },
-    "forest.2.2": {
-        "type": "text",
-        "text": "You find yourself among the trunks of",
-        "lift": " ",
-        "drop": " ",
-        "next": "forest.2.2.1"
-    },
-    "forest.2.2.1": {
-        "type": "call",
-        "label": "tree",
-        "branch": "tree",
-        "next": "forest.2.2.2"
-    },
-    "forest.2.2.2": {
-        "type": "text",
-        "text": "trees.",
-        "lift": " ",
-        "drop": " ",
-        "next": "forest.3"
-    },
-    "forest.2.3": {
-        "type": "text",
-        "text": "The trunks of",
-        "lift": " ",
-        "drop": " ",
-        "next": "forest.2.3.1"
-    },
-    "forest.2.3.1": {
-        "type": "call",
-        "label": "tree",
-        "branch": "tree",
-        "next": "forest.2.3.2"
-    },
-    "forest.2.3.2": {
-        "type": "text",
-        "text": "surround you.",
-        "lift": " ",
-        "drop": " ",
-        "next": "forest.3"
-    },
-    "forest.3": {
-        "type": "switch",
-        "variable": "forest.3",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "forest.3.1",
-            "forest.3.2",
-            "forest.3.3",
-            "forest.3.4",
-            "forest.3.5",
-            "forest.3.6"
-        ]
-    },
-    "forest.3.1": {
-        "type": "text",
-        "text": "A gentle breeze brings the smell of a rich",
-        "lift": "",
-        "drop": " ",
-        "next": "forest.3.1.1"
-    },
-    "forest.3.1.1": {
-        "type": "switch",
-        "variable": "forest.3.1.1",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "forest.3.1.1.1",
-            "forest.3.1.1.2"
-        ]
-    },
-    "forest.3.1.1.1": {
-        "type": "text",
-        "text": "duff",
-        "lift": "",
-        "drop": "",
-        "next": "forest.3.1.2"
-    },
-    "forest.3.1.1.2": {
-        "type": "text",
-        "text": "loam",
-        "lift": "",
-        "drop": "",
-        "next": "forest.3.1.2"
-    },
-    "forest.3.1.2": {
-        "type": "text",
-        "text": "all around.",
-        "lift": " ",
-        "drop": " ",
-        "next": "forest.4"
-    },
-    "forest.3.2": {
-        "type": "text",
-        "text": "Your passing raises a light dust.",
-        "lift": " ",
-        "drop": " ",
-        "next": "forest.4"
-    },
-    "forest.3.3": {
-        "type": "text",
-        "text": "A squirrel scrambles up and around a nearby tree.",
-        "lift": " ",
-        "drop": " ",
-        "next": "forest.4"
-    },
-    "forest.3.4": {
-        "type": "text",
-        "text": "A squirrel chirps from a distant branch.",
-        "lift": " ",
-        "drop": " ",
-        "next": "forest.4"
-    },
-    "forest.3.5": {
+    "journey.3.1": {
         "type": "text",
         "text": "A",
         "lift": " ",
         "drop": " ",
-        "next": "forest.3.5.1"
+        "next": "journey.3.1.1",
+        "position": "25:3"
     },
-    "forest.3.5.1": {
+    "journey.3.1.1": {
         "type": "switch",
-        "variable": "forest.3.5.1",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "forest.3.5.1.1",
-            "forest.3.5.1.2",
-            "forest.3.5.1.3",
-            "forest.3.5.1.4",
-            "forest.3.5.1.5",
-            "forest.3.5.1.6",
-            "forest.3.5.1.7"
-        ]
-    },
-    "forest.3.5.1.1": {
-        "type": "text",
-        "text": "yellow",
-        "lift": "",
-        "drop": "",
-        "next": "forest.3.5.2"
-    },
-    "forest.3.5.1.2": {
-        "type": "text",
-        "text": "yellow",
-        "lift": "",
-        "drop": "",
-        "next": "forest.3.5.2"
-    },
-    "forest.3.5.1.3": {
-        "type": "text",
-        "text": "orange",
-        "lift": "",
-        "drop": "",
-        "next": "forest.3.5.2"
-    },
-    "forest.3.5.1.4": {
-        "type": "text",
-        "text": "orange",
-        "lift": "",
-        "drop": "",
-        "next": "forest.3.5.2"
-    },
-    "forest.3.5.1.5": {
-        "type": "text",
-        "text": "red",
-        "lift": "",
-        "drop": "",
-        "next": "forest.3.5.2"
-    },
-    "forest.3.5.1.6": {
-        "type": "text",
-        "text": "purple",
-        "lift": "",
-        "drop": "",
-        "next": "forest.3.5.2"
-    },
-    "forest.3.5.1.7": {
-        "type": "text",
-        "text": "blue",
-        "lift": "",
-        "drop": "",
-        "next": "forest.3.5.2"
-    },
-    "forest.3.5.2": {
-        "type": "text",
-        "text": "butterfly passes over the trail.",
-        "lift": " ",
-        "drop": " ",
-        "next": "forest.4"
-    },
-    "forest.3.6": {
-        "type": "text",
-        "text": "Nothing stirs and the wood keeps its secrets.",
-        "lift": " ",
-        "drop": " ",
-        "next": "forest.4"
-    },
-    "forest.4": {
-        "type": "switch",
-        "variable": "x",
+        "expression": [
+            "#",
+            [
+                "get",
+                "x1"
+            ],
+            [
+                "get",
+                "y1"
+            ]
+        ],
+        "variable": null,
         "value": 0,
         "mode": "hash",
         "branches": [
-            "forest.4.1",
-            "forest.4.2",
-            "forest.4.3",
-            "forest.4.4",
-            "forest.4.5",
-            "forest.4.6"
-        ]
+            "journey.3.1.1.1",
+            "journey.3.1.1.2",
+            "journey.3.1.1.3"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "25:3"
     },
-    "forest.4.1": {
+    "journey.3.1.1.1": {
         "type": "text",
-        "text": "A broken stump stands beside the path.",
+        "text": "creek",
+        "lift": "",
+        "drop": "",
+        "next": "journey.3.1.2",
+        "position": "25:3"
+    },
+    "journey.3.1.1.2": {
+        "type": "text",
+        "text": "stream",
+        "lift": "",
+        "drop": "",
+        "next": "journey.3.1.2",
+        "position": "25:3"
+    },
+    "journey.3.1.1.3": {
+        "type": "text",
+        "text": "river",
+        "lift": "",
+        "drop": "",
+        "next": "journey.3.1.2",
+        "position": "25:3"
+    },
+    "journey.3.1.2": {
+        "type": "text",
+        "text": "flows through here.",
         "lift": " ",
         "drop": " ",
-        "next": null
+        "next": "setting",
+        "position": "26:3"
     },
-    "forest.4.2": {
+    "journey.3.2": {
         "type": "text",
-        "text": "The path passes between two noble trunks.",
+        "text": "You find yourself among trunks of",
         "lift": " ",
         "drop": " ",
-        "next": null
+        "next": "journey.3.2.1",
+        "position": "26:3"
     },
-    "forest.4.3": {
+    "journey.3.2.1": {
+        "type": "call",
+        "branch": "tree",
+        "args": [
+            [
+                "get",
+                "x"
+            ],
+            [
+                "get",
+                "y"
+            ]
+        ],
+        "next": "journey.3.2.2",
+        "position": "26:3"
+    },
+    "journey.3.2.2": {
         "type": "text",
-        "text": "A blackened trunk stands beside the path.",
+        "text": ".",
+        "lift": "",
+        "drop": " ",
+        "next": "setting",
+        "position": "27:3"
+    },
+    "journey.3.3": {
+        "type": "text",
+        "text": "You stand in a clearing.",
         "lift": " ",
         "drop": " ",
-        "next": null
+        "next": "setting",
+        "position": "28:3"
     },
-    "forest.4.4": {
+    "journey.3.4": {
         "type": "text",
-        "text": "Branches overhead crowd the way.",
+        "text": "You stand in a beautiful meadow.",
         "lift": " ",
         "drop": " ",
-        "next": null
+        "next": "setting",
+        "position": "29:3"
     },
-    "forest.4.5": {
+    "journey.3.5": {
+        "type": "text",
+        "text": "The view from the mountains takes your breath.",
+        "lift": " ",
+        "drop": " ",
+        "next": "setting",
+        "position": "30:3"
+    },
+    "setting": {
+        "type": "opt",
+        "question": [
+            "setting.0.2",
+            "setting.0.3"
+        ],
+        "answer": [
+            "setting.0.1",
+            "setting.0.3",
+            "setting.0.5"
+        ],
+        "next": "setting.1",
+        "position": "33:5"
+    },
+    "setting.0.1": {
+        "type": "text",
+        "text": "You c",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "33:5"
+    },
+    "setting.0.2": {
+        "type": "text",
+        "text": "C",
+        "lift": "",
+        "drop": "",
+        "next": null,
+        "position": "33:5"
+    },
+    "setting.0.3": {
+        "type": "text",
+        "text": "ontinue east,",
+        "lift": "",
+        "drop": " ",
+        "next": "setting.0.4",
+        "position": "33:5"
+    },
+    "setting.0.4": {
+        "type": "call",
+        "branch": "travel",
+        "args": [
+            [
+                "get",
+                "x"
+            ],
+            [
+                "get",
+                "y"
+            ],
+            [
+                "+",
+                [
+                    "get",
+                    "x"
+                ],
+                [
+                    "val",
+                    1
+                ]
+            ],
+            [
+                "get",
+                "y"
+            ]
+        ],
+        "next": null,
+        "position": "33:5"
+    },
+    "setting.0.5": {
+        "type": "move",
+        "source": [
+            "+",
+            [
+                "get",
+                "x"
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "target": [
+            "get",
+            "x"
+        ],
+        "next": "setting.0.6",
+        "position": "34:5"
+    },
+    "setting.0.6": {
+        "type": "move",
+        "source": [
+            "+",
+            [
+                "get",
+                "t"
+            ],
+            [
+                "val",
+                10
+            ]
+        ],
+        "target": [
+            "get",
+            "t"
+        ],
+        "next": "setting.3",
+        "position": "34:5"
+    },
+    "setting.1": {
+        "type": "jump",
+        "condition": [
+            "==",
+            [
+                ">",
+                [
+                    "get",
+                    "x"
+                ],
+                [
+                    "val",
+                    0
+                ]
+            ],
+            [
+                "val",
+                0
+            ]
+        ],
+        "branch": "setting.2",
+        "next": "setting.1.1",
+        "position": "36:5"
+    },
+    "setting.1.1": {
+        "type": "opt",
+        "question": [
+            "setting.1.3",
+            "setting.1.4"
+        ],
+        "answer": [
+            "setting.1.2",
+            "setting.1.4",
+            "setting.1.6"
+        ],
+        "next": "setting.2",
+        "position": "36:5"
+    },
+    "setting.1.2": {
+        "type": "text",
+        "text": "You r",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "36:5"
+    },
+    "setting.1.3": {
+        "type": "text",
+        "text": "R",
+        "lift": "",
+        "drop": "",
+        "next": null,
+        "position": "36:5"
+    },
+    "setting.1.4": {
+        "type": "text",
+        "text": "eturn west,",
+        "lift": "",
+        "drop": " ",
+        "next": "setting.1.5",
+        "position": "36:5"
+    },
+    "setting.1.5": {
+        "type": "call",
+        "branch": "travel",
+        "args": [
+            [
+                "get",
+                "x"
+            ],
+            [
+                "get",
+                "y"
+            ],
+            [
+                "-",
+                [
+                    "get",
+                    "x"
+                ],
+                [
+                    "val",
+                    1
+                ]
+            ],
+            [
+                "get",
+                "y"
+            ]
+        ],
+        "next": null,
+        "position": "36:5"
+    },
+    "setting.1.6": {
+        "type": "move",
+        "source": [
+            "-",
+            [
+                "get",
+                "x"
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "target": [
+            "get",
+            "x"
+        ],
+        "next": "setting.1.7",
+        "position": "37:5"
+    },
+    "setting.1.7": {
+        "type": "move",
+        "source": [
+            "+",
+            [
+                "get",
+                "t"
+            ],
+            [
+                "val",
+                10
+            ]
+        ],
+        "target": [
+            "get",
+            "t"
+        ],
+        "next": "setting.3",
+        "position": "37:5"
+    },
+    "setting.2": {
+        "type": "ask",
+        "position": "38:3"
+    },
+    "setting.3": {
+        "type": "call",
+        "branch": "timing",
+        "args": [],
+        "next": "setting",
+        "position": "39:3"
+    },
+    "travel": {
+        "type": "args",
+        "locals": [
+            "x1",
+            "y1",
+            "x2",
+            "y2"
+        ],
+        "next": "travel.1",
+        "position": "42:3"
+    },
+    "travel.1": {
+        "type": "move",
+        "source": [
+            "%",
+            [
+                "#",
+                [
+                    "#",
+                    [
+                        "get",
+                        "x1"
+                    ],
+                    [
+                        "get",
+                        "y1"
+                    ]
+                ]
+            ],
+            [
+                "val",
+                5
+            ]
+        ],
+        "target": [
+            "get",
+            "s1"
+        ],
+        "next": "travel.2",
+        "position": "44:5"
+    },
+    "travel.2": {
+        "type": "move",
+        "source": [
+            "%",
+            [
+                "#",
+                [
+                    "#",
+                    [
+                        "get",
+                        "x2"
+                    ],
+                    [
+                        "get",
+                        "y2"
+                    ]
+                ]
+            ],
+            [
+                "val",
+                5
+            ]
+        ],
+        "target": [
+            "get",
+            "s2"
+        ],
+        "next": "travel.3",
+        "position": "45:3"
+    },
+    "travel.3": {
         "type": "switch",
-        "variable": "forest.4.5",
+        "expression": [
+            "<>",
+            [
+                "get",
+                "s1"
+            ],
+            [
+                "get",
+                "s2"
+            ]
+        ],
+        "variable": null,
+        "value": 0,
+        "mode": "walk",
+        "branches": [
+            "travel.3.1",
+            "travel.3.2"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "45:3"
+    },
+    "travel.3.1": {
+        "type": "switch",
+        "expression": [
+            "get",
+            "s2"
+        ],
+        "variable": null,
+        "value": 0,
+        "mode": "walk",
+        "branches": [
+            "travel.3.1.0.1",
+            "travel.3.1.0.2",
+            "travel.3.1.0.3",
+            "travel.3.1.0.4",
+            "travel.3.1.0.5"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "47:5"
+    },
+    "travel.3.1.0.1": {
+        "type": "text",
+        "text": "following the",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.1.0.1.1",
+        "position": "47:5"
+    },
+    "travel.3.1.0.1.1": {
+        "type": "switch",
+        "expression": [
+            "#",
+            [
+                "get",
+                "x1"
+            ],
+            [
+                "get",
+                "y1"
+            ]
+        ],
+        "variable": null,
+        "value": 0,
+        "mode": "hash",
+        "branches": [
+            "travel.3.1.0.1.1.1",
+            "travel.3.1.0.1.1.2",
+            "travel.3.1.0.1.1.3"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "47:5"
+    },
+    "travel.3.1.0.1.1.1": {
+        "type": "text",
+        "text": "creek",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.1.0.1.2",
+        "position": "47:5"
+    },
+    "travel.3.1.0.1.1.2": {
+        "type": "text",
+        "text": "stream",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.1.0.1.2",
+        "position": "47:5"
+    },
+    "travel.3.1.0.1.1.3": {
+        "type": "text",
+        "text": "river",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.1.0.1.2",
+        "position": "47:5"
+    },
+    "travel.3.1.0.1.2": {
+        "type": "text",
+        "text": ".",
+        "lift": "",
+        "drop": " ",
+        "next": null,
+        "position": "48:5"
+    },
+    "travel.3.1.0.2": {
+        "type": "switch",
+        "expression": [
+            "get",
+            "travel.3.1.0.2"
+        ],
+        "variable": "travel.3.1.0.2",
         "value": 0,
         "mode": "rand",
         "branches": [
-            "forest.4.5.0.1",
-            "forest.4.5.0.2",
-            "forest.4.5.0.3"
-        ]
+            "travel.3.1.0.2.0.1",
+            "travel.3.1.0.2.0.2"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "48:5"
     },
-    "forest.4.5.0.1": {
+    "travel.3.1.0.2.0.1": {
+        "type": "goto",
+        "next": "travel.3.1.0.2.1",
+        "position": "48:5"
+    },
+    "travel.3.1.0.2.0.2": {
         "type": "text",
-        "text": "You hear burrowing from a thicket beside the road.",
+        "text": "continuing",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.1.0.2.1",
+        "position": "48:5"
+    },
+    "travel.3.1.0.2.1": {
+        "type": "text",
+        "text": "through the forest.",
+        "lift": " ",
+        "drop": " ",
+        "next": null,
+        "position": "49:5"
+    },
+    "travel.3.1.0.3": {
+        "type": "switch",
+        "expression": [
+            "get",
+            "travel.3.1.0.3"
+        ],
+        "variable": "travel.3.1.0.3",
+        "value": 0,
+        "mode": "rand",
+        "branches": [
+            "travel.3.1.0.3.0.1",
+            "travel.3.1.0.3.0.2"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "49:5"
+    },
+    "travel.3.1.0.3.0.1": {
+        "type": "goto",
+        "next": "travel.3.1.0.3.1",
+        "position": "49:5"
+    },
+    "travel.3.1.0.3.0.2": {
+        "type": "text",
+        "text": "continuing",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.1.0.3.1",
+        "position": "49:5"
+    },
+    "travel.3.1.0.3.1": {
+        "type": "text",
+        "text": "through the",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.1.0.3.2",
+        "position": "49:5"
+    },
+    "travel.3.1.0.3.2": {
+        "type": "switch",
+        "expression": [
+            "#",
+            [
+                "get",
+                "x1"
+            ],
+            [
+                "get",
+                "y1"
+            ]
+        ],
+        "variable": null,
+        "value": 0,
+        "mode": "hash",
+        "branches": [
+            "travel.3.1.0.3.2.1",
+            "travel.3.1.0.3.2.2",
+            "travel.3.1.0.3.2.3"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "49:5"
+    },
+    "travel.3.1.0.3.2.1": {
+        "type": "text",
+        "text": "field",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.1.0.3.3",
+        "position": "49:5"
+    },
+    "travel.3.1.0.3.2.2": {
+        "type": "text",
+        "text": "plain",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.1.0.3.3",
+        "position": "49:5"
+    },
+    "travel.3.1.0.3.2.3": {
+        "type": "text",
+        "text": "clearing",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.1.0.3.3",
+        "position": "49:5"
+    },
+    "travel.3.1.0.3.3": {
+        "type": "text",
+        "text": ".",
         "lift": "",
         "drop": " ",
-        "next": null
+        "next": null,
+        "position": "50:5"
     },
-    "forest.4.5.0.2": {
+    "travel.3.1.0.4": {
+        "type": "switch",
+        "expression": [
+            "get",
+            "travel.3.1.0.4"
+        ],
+        "variable": "travel.3.1.0.4",
+        "value": 0,
+        "mode": "rand",
+        "branches": [
+            "travel.3.1.0.4.0.1",
+            "travel.3.1.0.4.0.2"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "50:5"
+    },
+    "travel.3.1.0.4.0.1": {
+        "type": "goto",
+        "next": "travel.3.1.0.4.1",
+        "position": "50:5"
+    },
+    "travel.3.1.0.4.0.2": {
         "type": "text",
-        "text": "There is a thicket nearby.",
+        "text": "continuing",
         "lift": " ",
         "drop": " ",
-        "next": null
+        "next": "travel.3.1.0.4.1",
+        "position": "50:5"
     },
-    "forest.4.5.0.3": {
+    "travel.3.1.0.4.1": {
         "type": "text",
-        "text": "A nearby thicket appears to be the home of some burrowing creature.",
+        "text": "through the meadow.",
         "lift": " ",
         "drop": " ",
-        "next": null
+        "next": null,
+        "position": "51:5"
     },
-    "forest.4.6": {
+    "travel.3.1.0.5": {
+        "type": "switch",
+        "expression": [
+            "get",
+            "travel.3.1.0.5"
+        ],
+        "variable": "travel.3.1.0.5",
+        "value": 0,
+        "mode": "rand",
+        "branches": [
+            "travel.3.1.0.5.0.1",
+            "travel.3.1.0.5.0.2"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "51:5"
+    },
+    "travel.3.1.0.5.0.1": {
+        "type": "goto",
+        "next": "travel.3.1.0.5.1",
+        "position": "51:5"
+    },
+    "travel.3.1.0.5.0.2": {
         "type": "text",
-        "text": "Saplings adorn the forest floor.",
+        "text": "continuing",
         "lift": " ",
         "drop": " ",
-        "next": null
+        "next": "travel.3.1.0.5.1",
+        "position": "51:5"
+    },
+    "travel.3.1.0.5.1": {
+        "type": "text",
+        "text": "through the mountains.",
+        "lift": " ",
+        "drop": " ",
+        "next": null,
+        "position": "52:5"
+    },
+    "travel.3.2": {
+        "type": "switch",
+        "expression": [
+            "get",
+            "s1"
+        ],
+        "variable": null,
+        "value": 0,
+        "mode": "walk",
+        "branches": [
+            "travel.3.2.0.1",
+            "travel.3.2.0.2",
+            "travel.3.2.0.3",
+            "travel.3.2.0.4",
+            "travel.3.2.0.5"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "54:5"
+    },
+    "travel.3.2.0.1": {
+        "type": "text",
+        "text": "crossing the",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.2.0.1.1",
+        "position": "54:5"
+    },
+    "travel.3.2.0.1.1": {
+        "type": "switch",
+        "expression": [
+            "#",
+            [
+                "get",
+                "x1"
+            ],
+            [
+                "get",
+                "y1"
+            ]
+        ],
+        "variable": null,
+        "value": 0,
+        "mode": "hash",
+        "branches": [
+            "travel.3.2.0.1.1.1",
+            "travel.3.2.0.1.1.2",
+            "travel.3.2.0.1.1.3"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "54:5"
+    },
+    "travel.3.2.0.1.1.1": {
+        "type": "text",
+        "text": "creek",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.2.1",
+        "position": "54:5"
+    },
+    "travel.3.2.0.1.1.2": {
+        "type": "text",
+        "text": "stream",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.2.1",
+        "position": "54:5"
+    },
+    "travel.3.2.0.1.1.3": {
+        "type": "text",
+        "text": "river",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.2.1",
+        "position": "54:5"
+    },
+    "travel.3.2.0.2": {
+        "type": "text",
+        "text": "emerging from the forest",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.2.1",
+        "position": "56:5"
+    },
+    "travel.3.2.0.3": {
+        "type": "goto",
+        "next": "travel.3.2.1",
+        "position": "57:5"
+    },
+    "travel.3.2.0.4": {
+        "type": "text",
+        "text": "leaving the meadow",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.2.1",
+        "position": "58:5"
+    },
+    "travel.3.2.0.5": {
+        "type": "text",
+        "text": "down",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.2.1",
+        "position": "59:5"
+    },
+    "travel.3.2.1": {
+        "type": "switch",
+        "expression": [
+            "get",
+            "s2"
+        ],
+        "variable": null,
+        "value": 0,
+        "mode": "walk",
+        "branches": [
+            "travel.3.2.1.1",
+            "travel.3.2.1.2",
+            "travel.3.2.1.3",
+            "travel.3.2.1.4",
+            "travel.3.2.1.5"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "61:5"
+    },
+    "travel.3.2.1.1": {
+        "type": "text",
+        "text": "to the bank of a",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.2.1.1.1",
+        "position": "61:5"
+    },
+    "travel.3.2.1.1.1": {
+        "type": "switch",
+        "expression": [
+            "get",
+            "travel.3.2.1.1.1"
+        ],
+        "variable": "travel.3.2.1.1.1",
+        "value": 0,
+        "mode": "rand",
+        "branches": [
+            "travel.3.2.1.1.1.1",
+            "travel.3.2.1.1.1.2",
+            "travel.3.2.1.1.1.3"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "61:5"
+    },
+    "travel.3.2.1.1.1.1": {
+        "type": "text",
+        "text": "creek",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.2.1.1.2",
+        "position": "61:5"
+    },
+    "travel.3.2.1.1.1.2": {
+        "type": "text",
+        "text": "stream",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.2.1.1.2",
+        "position": "61:5"
+    },
+    "travel.3.2.1.1.1.3": {
+        "type": "text",
+        "text": "river",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.2.1.1.2",
+        "position": "61:5"
+    },
+    "travel.3.2.1.1.2": {
+        "type": "text",
+        "text": ".",
+        "lift": "",
+        "drop": " ",
+        "next": null,
+        "position": "62:5"
+    },
+    "travel.3.2.1.2": {
+        "type": "text",
+        "text": "into a forest of",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.2.1.2.1",
+        "position": "62:5"
+    },
+    "travel.3.2.1.2.1": {
+        "type": "call",
+        "branch": "tree",
+        "args": [
+            [
+                "get",
+                "x2"
+            ],
+            [
+                "get",
+                "y2"
+            ]
+        ],
+        "next": "travel.3.2.1.2.2",
+        "position": "62:5"
+    },
+    "travel.3.2.1.2.2": {
+        "type": "text",
+        "text": ".",
+        "lift": "",
+        "drop": " ",
+        "next": null,
+        "position": "63:5"
+    },
+    "travel.3.2.1.3": {
+        "type": "text",
+        "text": "to enter a",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.2.1.3.1",
+        "position": "63:5"
+    },
+    "travel.3.2.1.3.1": {
+        "type": "switch",
+        "expression": [
+            "#",
+            [
+                "get",
+                "x2"
+            ],
+            [
+                "get",
+                "y2"
+            ]
+        ],
+        "variable": null,
+        "value": 0,
+        "mode": "hash",
+        "branches": [
+            "travel.3.2.1.3.1.1",
+            "travel.3.2.1.3.1.2",
+            "travel.3.2.1.3.1.3"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "63:5"
+    },
+    "travel.3.2.1.3.1.1": {
+        "type": "text",
+        "text": "field",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.2.1.3.2",
+        "position": "63:5"
+    },
+    "travel.3.2.1.3.1.2": {
+        "type": "text",
+        "text": "plain",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.2.1.3.2",
+        "position": "63:5"
+    },
+    "travel.3.2.1.3.1.3": {
+        "type": "text",
+        "text": "clearing",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.2.1.3.2",
+        "position": "63:5"
+    },
+    "travel.3.2.1.3.2": {
+        "type": "text",
+        "text": ".",
+        "lift": "",
+        "drop": " ",
+        "next": null,
+        "position": "64:5"
+    },
+    "travel.3.2.1.4": {
+        "type": "text",
+        "text": "into a",
+        "lift": " ",
+        "drop": " ",
+        "next": "travel.3.2.1.4.1",
+        "position": "64:5"
+    },
+    "travel.3.2.1.4.1": {
+        "type": "switch",
+        "expression": [
+            "get",
+            "travel.3.2.1.4.1"
+        ],
+        "variable": "travel.3.2.1.4.1",
+        "value": 0,
+        "mode": "rand",
+        "branches": [
+            "travel.3.2.1.4.1.1",
+            "travel.3.2.1.4.1.2",
+            "travel.3.2.1.4.1.3"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "64:5"
+    },
+    "travel.3.2.1.4.1.1": {
+        "type": "text",
+        "text": "beautiful",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.2.1.4.2",
+        "position": "64:5"
+    },
+    "travel.3.2.1.4.1.2": {
+        "type": "text",
+        "text": "lovely",
+        "lift": "",
+        "drop": "",
+        "next": "travel.3.2.1.4.2",
+        "position": "64:5"
+    },
+    "travel.3.2.1.4.1.3": {
+        "type": "goto",
+        "next": "travel.3.2.1.4.2",
+        "position": "64:5"
+    },
+    "travel.3.2.1.4.2": {
+        "type": "text",
+        "text": "meadow.",
+        "lift": " ",
+        "drop": " ",
+        "next": null,
+        "position": "65:5"
+    },
+    "travel.3.2.1.5": {
+        "type": "text",
+        "text": "up into the mountains.",
+        "lift": " ",
+        "drop": " ",
+        "next": null,
+        "position": "66:5"
+    },
+    "timing": {
+        "type": "args",
+        "locals": [],
+        "next": "timing.1",
+        "position": "69:3"
+    },
+    "timing.1": {
+        "type": "switch",
+        "expression": [
+            "==",
+            [
+                "/",
+                [
+                    "get",
+                    "t"
+                ],
+                [
+                    "val",
+                    60
+                ]
+            ],
+            [
+                "/",
+                [
+                    "get",
+                    "from.t"
+                ],
+                [
+                    "val",
+                    60
+                ]
+            ]
+        ],
+        "variable": null,
+        "value": 0,
+        "mode": "walk",
+        "branches": [
+            "timing.1.1",
+            "timing.1.2"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "70:3"
+    },
+    "timing.1.1": {
+        "type": "text",
+        "text": "The hour rolls on. It is now",
+        "lift": " ",
+        "drop": " ",
+        "next": "timing.1.1.1",
+        "position": "72:5"
+    },
+    "timing.1.1.1": {
+        "type": "call",
+        "branch": "time",
+        "args": [],
+        "next": "timing.1.1.2",
+        "position": "72:5"
+    },
+    "timing.1.1.2": {
+        "type": "text",
+        "text": ".",
+        "lift": "",
+        "drop": " ",
+        "next": "timing.1.1.3",
+        "position": "73:7"
+    },
+    "timing.1.1.3": {
+        "type": "move",
+        "source": [
+            "get",
+            "t"
+        ],
+        "target": [
+            "get",
+            "from.t"
+        ],
+        "next": null,
+        "position": "74:3"
+    },
+    "timing.1.2": {
+        "type": "goto",
+        "next": null,
+        "position": "74:3"
+    },
+    "time": {
+        "type": "args",
+        "locals": [],
+        "next": "time.1",
+        "position": "76:3"
+    },
+    "time.1": {
+        "type": "switch",
+        "expression": [
+            "/",
+            [
+                "get",
+                "t"
+            ],
+            [
+                "val",
+                60
+            ]
+        ],
+        "variable": null,
+        "value": 0,
+        "mode": "loop",
+        "branches": [
+            "time.1.1",
+            "time.1.2",
+            "time.1.3",
+            "time.1.4",
+            "time.1.5",
+            "time.1.6",
+            "time.1.7",
+            "time.1.8",
+            "time.1.9",
+            "time.1.10",
+            "time.1.11",
+            "time.1.12",
+            "time.1.13",
+            "time.1.14"
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "77:3"
+    },
+    "time.1.1": {
+        "type": "text",
+        "text": "high don, the hour of the rowan",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "78:3"
+    },
+    "time.1.2": {
+        "type": "text",
+        "text": "elm hour, the hour after high don",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "79:3"
+    },
+    "time.1.3": {
+        "type": "text",
+        "text": "fir hour, the hour before high non",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "80:3"
+    },
+    "time.1.4": {
+        "type": "text",
+        "text": "high non, with the sun directly overhead",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "81:3"
+    },
+    "time.1.5": {
+        "type": "text",
+        "text": "cedar hour, the hour after high non",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "82:3"
+    },
+    "time.1.6": {
+        "type": "text",
+        "text": "holly hour, the hour before high dusk",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "83:3"
+    },
+    "time.1.7": {
+        "type": "text",
+        "text": "high dusk, the hour of the hawthorn",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "84:3"
+    },
+    "time.1.8": {
+        "type": "text",
+        "text": "low dusk, the hour of the alder",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "85:3"
+    },
+    "time.1.9": {
+        "type": "text",
+        "text": "ash hour, the hour after low dusk",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "86:3"
+    },
+    "time.1.10": {
+        "type": "text",
+        "text": "oak hour, the hour before low non",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "87:3"
+    },
+    "time.1.11": {
+        "type": "text",
+        "text": "low non, the hour of the elder and the middle of the night",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "88:3"
+    },
+    "time.1.12": {
+        "type": "text",
+        "text": "birch hour, the hour after low non",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "89:3"
+    },
+    "time.1.13": {
+        "type": "text",
+        "text": "yew hour, the hour before low don",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "90:3"
+    },
+    "time.1.14": {
+        "type": "text",
+        "text": "low don, the hour of the willow",
+        "lift": " ",
+        "drop": "",
+        "next": null,
+        "position": "91:3"
     },
     "tree": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "tree.1"
+        "type": "args",
+        "locals": [
+            "x",
+            "y"
+        ],
+        "next": "tree.1",
+        "position": "93:3"
     },
     "tree.1": {
         "type": "switch",
-        "variable": "x",
+        "expression": [
+            "#",
+            [
+                "get",
+                "x"
+            ],
+            [
+                "get",
+                "y"
+            ]
+        ],
+        "variable": null,
         "value": 0,
         "mode": "hash",
         "branches": [
@@ -1678,1439 +1950,166 @@
             "tree.1.11",
             "tree.1.12",
             "tree.1.13"
-        ]
+        ],
+        "weights": [
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ],
+            [
+                "val",
+                1
+            ]
+        ],
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.1": {
         "type": "text",
         "text": "willow",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.2": {
         "type": "text",
         "text": "rowan",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.3": {
         "type": "text",
         "text": "elm",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.4": {
         "type": "text",
         "text": "fir",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.5": {
         "type": "text",
         "text": "cedar",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.6": {
         "type": "text",
         "text": "holly",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.7": {
         "type": "text",
-        "text": "hawthorne",
+        "text": "hawthorn",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.8": {
         "type": "text",
         "text": "alder",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.9": {
         "type": "text",
         "text": "ash",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.10": {
         "type": "text",
         "text": "oak",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.11": {
         "type": "text",
         "text": "elder",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.12": {
         "type": "text",
         "text": "birch",
         "lift": "",
         "drop": "",
-        "next": null
+        "next": null,
+        "position": "94:3"
     },
     "tree.1.13": {
         "type": "text",
         "text": "yew",
         "lift": "",
         "drop": "",
-        "next": null
-    },
-    "clearing": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "clearing.1"
-    },
-    "clearing.1": {
-        "type": "set",
-        "variable": "river",
-        "value": 0,
-        "next": "clearing.2"
-    },
-    "clearing.2": {
-        "type": "switch",
-        "variable": "clearing.2",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "clearing.2.1",
-            "clearing.2.2",
-            "clearing.2.3"
-        ]
-    },
-    "clearing.2.1": {
-        "type": "text",
-        "text": "You find yourself in a clearing.",
-        "lift": "",
-        "drop": " ",
-        "next": "clearing.3"
-    },
-    "clearing.2.2": {
-        "type": "text",
-        "text": "The forest opens to clearing.",
-        "lift": " ",
-        "drop": " ",
-        "next": "clearing.3"
-    },
-    "clearing.2.3": {
-        "type": "text",
-        "text": "The trees clear around you, revealing the sky above.",
-        "lift": " ",
-        "drop": " ",
-        "next": "clearing.3"
-    },
-    "clearing.3": {
-        "type": "switch",
-        "variable": "x",
-        "value": 0,
-        "mode": "hash",
-        "branches": [
-            "clearing.3.1",
-            "clearing.3.2",
-            "clearing.3.3",
-            "clearing.3.4",
-            "clearing.3.5"
-        ]
-    },
-    "clearing.3.1": {
-        "type": "text",
-        "text": "Green grass bows to the wind.",
-        "lift": " ",
-        "drop": " ",
-        "next": "clearing.4"
-    },
-    "clearing.3.2": {
-        "type": "text",
-        "text": "Amber grasses dance in the breeze.",
-        "lift": " ",
-        "drop": " ",
-        "next": "clearing.4"
-    },
-    "clearing.3.3": {
-        "type": "text",
-        "text": "A sheet of gray shale tilts out of the earth.",
-        "lift": " ",
-        "drop": " ",
-        "next": "clearing.4"
-    },
-    "clearing.3.4": {
-        "type": "text",
-        "text": "The lands all around are pocked with boulders.",
-        "lift": " ",
-        "drop": " ",
-        "next": "clearing.4"
-    },
-    "clearing.3.5": {
-        "type": "text",
-        "text": "A shallow gorge hosts a dry creek bed running along the way.",
-        "lift": " ",
-        "drop": " ",
-        "next": "clearing.4"
-    },
-    "clearing.4": {
-        "type": "jgt",
-        "variable": "hour",
-        "value": 7,
-        "branch": "clearing.6",
-        "next": "clearing.5"
-    },
-    "clearing.5": {
-        "type": "switch",
-        "variable": "clearing.5",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "clearing.5.1",
-            "clearing.5.2",
-            "clearing.5.3",
-            "clearing.5.4",
-            "clearing.5.5",
-            "clearing.5.6"
-        ]
-    },
-    "clearing.5.1": {
-        "type": "text",
-        "text": "Stars twinkle overhead.",
-        "lift": "",
-        "drop": " ",
-        "next": "clearing.6"
-    },
-    "clearing.5.2": {
-        "type": "text",
-        "text": "The night sky is breathtaking.",
-        "lift": " ",
-        "drop": " ",
-        "next": "clearing.6"
-    },
-    "clearing.5.3": {
-        "type": "text",
-        "text": "The constellations of the galaxy",
-        "lift": " ",
-        "drop": " ",
-        "next": "clearing.5.3.1"
-    },
-    "clearing.5.3.1": {
-        "type": "switch",
-        "variable": "clearing.5.3.1",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "clearing.5.3.1.1",
-            "clearing.5.3.1.2"
-        ]
-    },
-    "clearing.5.3.1.1": {
-        "type": "text",
-        "text": "mill",
-        "lift": "",
-        "drop": "",
-        "next": "clearing.5.3.2"
-    },
-    "clearing.5.3.1.2": {
-        "type": "text",
-        "text": "wheel",
-        "lift": "",
-        "drop": "",
-        "next": "clearing.5.3.2"
-    },
-    "clearing.5.3.2": {
-        "type": "text",
-        "text": "about the sky.",
-        "lift": " ",
-        "drop": " ",
-        "next": "clearing.6"
-    },
-    "clearing.5.4": {
-        "type": "goto",
-        "next": "clearing.6"
-    },
-    "clearing.5.5": {
-        "type": "goto",
-        "next": "clearing.6"
-    },
-    "clearing.5.6": {
-        "type": "goto",
-        "next": "clearing.6"
-    },
-    "clearing.6": {
-        "type": "jle",
-        "variable": "hour",
-        "value": 7,
-        "branch": null,
-        "next": "clearing.7"
-    },
-    "clearing.7": {
-        "type": "switch",
-        "variable": "clearing.7",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "clearing.7.1",
-            "clearing.7.2",
-            "clearing.7.3",
-            "clearing.7.4",
-            "clearing.7.5",
-            "clearing.7.6"
-        ]
-    },
-    "clearing.7.1": {
-        "type": "text",
-        "text": "The sun",
-        "lift": "",
-        "drop": " ",
-        "next": "clearing.7.1.1"
-    },
-    "clearing.7.1.1": {
-        "type": "switch",
-        "variable": "clearing.7.1.1",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "clearing.7.1.1.1",
-            "clearing.7.1.1.2"
-        ]
-    },
-    "clearing.7.1.1.1": {
-        "type": "text",
-        "text": "treks across",
-        "lift": "",
-        "drop": "",
-        "next": "clearing.7.1.2"
-    },
-    "clearing.7.1.1.2": {
-        "type": "text",
-        "text": "scans",
-        "lift": "",
-        "drop": "",
-        "next": "clearing.7.1.2"
-    },
-    "clearing.7.1.2": {
-        "type": "text",
-        "text": "the heavens.",
-        "lift": " ",
-        "drop": " ",
-        "next": null
-    },
-    "clearing.7.2": {
-        "type": "text",
-        "text": "A marmot squeaks on a distant rock.",
-        "lift": " ",
-        "drop": " ",
-        "next": null
-    },
-    "clearing.7.3": {
-        "type": "text",
-        "text": "Buck deer flee the road.",
-        "lift": " ",
-        "drop": " ",
-        "next": null
-    },
-    "clearing.7.4": {
-        "type": "goto",
-        "next": null
-    },
-    "clearing.7.5": {
-        "type": "goto",
-        "next": null
-    },
-    "clearing.7.6": {
-        "type": "goto",
-        "next": null
-    },
-    "river": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "river.1"
-    },
-    "river.1": {
-        "type": "set",
-        "variable": "river",
-        "value": 1,
-        "next": "river.2"
-    },
-    "river.2": {
-        "type": "switch",
-        "variable": "x",
-        "value": 0,
-        "mode": "hash",
-        "branches": [
-            "river.2.1",
-            "river.2.2",
-            "river.2.3",
-            "river.2.4",
-            "river.2.5",
-            "river.2.6",
-            "river.2.7"
-        ]
-    },
-    "river.2.1": {
-        "type": "text",
-        "text": "A river with fresh water flows through here.",
-        "lift": "",
-        "drop": " ",
-        "next": "river.3"
-    },
-    "river.2.2": {
-        "type": "text",
-        "text": "A wide stream flows across the way.",
-        "lift": " ",
-        "drop": " ",
-        "next": "river.3"
-    },
-    "river.2.3": {
-        "type": "text",
-        "text": "Waters flow down from the hills to the north, over the trail here.",
-        "lift": " ",
-        "drop": " ",
-        "next": "river.3"
-    },
-    "river.2.4": {
-        "type": "text",
-        "text": "A small creek flows from a narrow culvert, over the trail.",
-        "lift": " ",
-        "drop": " ",
-        "next": "river.3"
-    },
-    "river.2.5": {
-        "type": "text",
-        "text": "A stout bridge carries the road over a narrow channel of water.",
-        "lift": " ",
-        "drop": " ",
-        "next": "river.3"
-    },
-    "river.2.6": {
-        "type": "text",
-        "text": "Stepping stones wade in a shallow stream, guiding your track over the water.",
-        "lift": " ",
-        "drop": " ",
-        "next": "river.3"
-    },
-    "river.2.7": {
-        "type": "text",
-        "text": "A cascade of deep, cold pools fall from the hillside to the north and spill through myriad channels through the trail.",
-        "lift": " ",
-        "drop": " ",
-        "next": "river.3"
-    },
-    "river.3": {
-        "type": "switch",
-        "variable": "river.3",
-        "value": 0,
-        "mode": "rand",
-        "branches": [
-            "river.3.1",
-            "river.3.2",
-            "river.3.3",
-            "river.3.4"
-        ]
-    },
-    "river.3.1": {
-        "type": "text",
-        "text": "The trickle of water is music to your ears.",
-        "lift": "",
-        "drop": " ",
-        "next": null
-    },
-    "river.3.2": {
-        "type": "text",
-        "text": "The promise of refreshment puts your heart and feet at ease.",
-        "lift": " ",
-        "drop": " ",
-        "next": null
-    },
-    "river.3.3": {
-        "type": "text",
-        "text": "The damp reaches your nose and cools your skin.",
-        "lift": " ",
-        "drop": " ",
-        "next": null
-    },
-    "river.3.4": {
-        "type": "text",
-        "text": "Light plays on the water.",
-        "lift": " ",
-        "drop": " ",
-        "next": null
-    },
-    "fill": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "fill.1"
-    },
-    "fill.1": {
-        "type": "jz",
-        "variable": "empty",
-        "branch": null,
-        "next": "fill.2"
-    },
-    "fill.2": {
-        "type": "add",
-        "variable": "water",
-        "value": 1,
-        "next": "fill.3"
-    },
-    "fill.3": {
-        "type": "sub",
-        "variable": "empty",
-        "value": 1,
-        "next": "fill"
-    },
-    "inventory": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "inventory.1"
-    },
-    "inventory.1": {
-        "type": "jnz",
-        "variable": "hunger",
-        "branch": "inventory.3",
-        "next": "inventory.2"
-    },
-    "inventory.2": {
-        "type": "jnz",
-        "variable": "thirst",
-        "branch": "inventory.3",
-        "next": null
-    },
-    "inventory.3": {
-        "type": "text",
-        "text": "You have",
-        "lift": "",
-        "drop": " ",
-        "next": "inventory.4"
-    },
-    "inventory.4": {
-        "type": "switch",
-        "variable": "water",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.4.1",
-            "inventory.4.2"
-        ]
-    },
-    "inventory.4.1": {
-        "type": "switch",
-        "variable": "deer",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.4.1.0.1",
-            "inventory.4.1.0.2"
-        ]
-    },
-    "inventory.4.1.0.1": {
-        "type": "switch",
-        "variable": "fish",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.4.1.0.1.0.1",
-            "inventory.4.1.0.1.0.2"
-        ]
-    },
-    "inventory.4.1.0.1.0.1": {
-        "type": "text",
-        "text": "no food nor water to spare.",
-        "lift": "",
-        "drop": " ",
-        "next": null
-    },
-    "inventory.4.1.0.1.0.2": {
-        "type": "goto",
-        "next": "inventory.5"
-    },
-    "inventory.4.1.0.2": {
-        "type": "goto",
-        "next": "inventory.5"
-    },
-    "inventory.4.2": {
-        "type": "goto",
-        "next": "inventory.5"
-    },
-    "inventory.5": {
-        "type": "switch",
-        "variable": "water",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.5.1",
-            "inventory.5.2"
-        ]
-    },
-    "inventory.5.1": {
-        "type": "text",
-        "text": "no water",
-        "lift": "",
-        "drop": " ",
-        "next": "inventory.5.1.1"
-    },
-    "inventory.5.1.1": {
-        "type": "switch",
-        "variable": "deer",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.5.1.1.1",
-            "inventory.5.1.1.2"
-        ]
-    },
-    "inventory.5.1.1.1": {
-        "type": "switch",
-        "variable": "fish",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.5.1.1.1.0.1",
-            "inventory.5.1.1.1.0.2"
-        ]
-    },
-    "inventory.5.1.1.1.0.1": {
-        "type": "text",
-        "text": "and",
-        "lift": " ",
-        "drop": " ",
-        "next": "inventory.6"
-    },
-    "inventory.5.1.1.1.0.2": {
-        "type": "text",
-        "text": "but",
-        "lift": " ",
-        "drop": " ",
-        "next": "inventory.6"
-    },
-    "inventory.5.1.1.2": {
-        "type": "text",
-        "text": "but",
-        "lift": " ",
-        "drop": " ",
-        "next": "inventory.6"
-    },
-    "inventory.5.2": {
-        "type": "goto",
-        "next": "inventory.6"
-    },
-    "inventory.6": {
-        "type": "switch",
-        "variable": "water",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.6.1",
-            "inventory.6.2"
-        ]
-    },
-    "inventory.6.1": {
-        "type": "goto",
-        "next": "inventory.7"
-    },
-    "inventory.6.2": {
-        "type": "print",
-        "variable": "water",
-        "next": "inventory.6.2.1"
-    },
-    "inventory.6.2.1": {
-        "type": "text",
-        "text": "bottle",
-        "lift": " ",
-        "drop": "",
-        "next": "inventory.6.2.2"
-    },
-    "inventory.6.2.2": {
-        "type": "switch",
-        "variable": "water",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.6.2.2.1",
-            "inventory.6.2.2.2",
-            "inventory.6.2.2.3"
-        ]
-    },
-    "inventory.6.2.2.1": {
-        "type": "text",
-        "text": "s",
-        "lift": "",
-        "drop": "",
-        "next": "inventory.6.2.3"
-    },
-    "inventory.6.2.2.2": {
-        "type": "goto",
-        "next": "inventory.6.2.3"
-    },
-    "inventory.6.2.2.3": {
-        "type": "text",
-        "text": "s",
-        "lift": "",
-        "drop": "",
-        "next": "inventory.6.2.3"
-    },
-    "inventory.6.2.3": {
-        "type": "text",
-        "text": "of water",
-        "lift": " ",
-        "drop": " ",
-        "next": "inventory.6.2.4"
-    },
-    "inventory.6.2.4": {
-        "type": "switch",
-        "variable": "deer",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.6.2.4.1",
-            "inventory.6.2.4.2"
-        ]
-    },
-    "inventory.6.2.4.1": {
-        "type": "switch",
-        "variable": "fish",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.6.2.4.1.0.1",
-            "inventory.6.2.4.1.0.2"
-        ]
-    },
-    "inventory.6.2.4.1.0.1": {
-        "type": "text",
-        "text": "and naught to eat.",
-        "lift": " ",
-        "drop": " ",
-        "next": null
-    },
-    "inventory.6.2.4.1.0.2": {
-        "type": "text",
-        "text": "and",
-        "lift": " ",
-        "drop": " ",
-        "next": "inventory.7"
-    },
-    "inventory.6.2.4.2": {
-        "type": "text",
-        "text": "and",
-        "lift": " ",
-        "drop": " ",
-        "next": "inventory.7"
-    },
-    "inventory.7": {
-        "type": "switch",
-        "variable": "deer",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.7.1",
-            "inventory.7.2"
-        ]
-    },
-    "inventory.7.1": {
-        "type": "goto",
-        "next": "inventory.8"
-    },
-    "inventory.7.2": {
-        "type": "text",
-        "text": "smoked venision for",
-        "lift": "",
-        "drop": " ",
-        "next": "inventory.7.2.1"
-    },
-    "inventory.7.2.1": {
-        "type": "print",
-        "variable": "deer",
-        "next": "inventory.7.2.2"
-    },
-    "inventory.7.2.2": {
-        "type": "text",
-        "text": "meal",
-        "lift": " ",
-        "drop": "",
-        "next": "inventory.7.2.3"
-    },
-    "inventory.7.2.3": {
-        "type": "switch",
-        "variable": "deer",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.7.2.3.1",
-            "inventory.7.2.3.2",
-            "inventory.7.2.3.3"
-        ]
-    },
-    "inventory.7.2.3.1": {
-        "type": "text",
-        "text": "s",
-        "lift": "",
-        "drop": "",
-        "next": "inventory.8"
-    },
-    "inventory.7.2.3.2": {
-        "type": "goto",
-        "next": "inventory.8"
-    },
-    "inventory.7.2.3.3": {
-        "type": "text",
-        "text": "s",
-        "lift": "",
-        "drop": "",
-        "next": "inventory.8"
-    },
-    "inventory.8": {
-        "type": "switch",
-        "variable": "fish",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.8.1",
-            "inventory.8.2"
-        ]
-    },
-    "inventory.8.1": {
-        "type": "text",
-        "text": ".",
-        "lift": "",
-        "drop": " ",
-        "next": null
-    },
-    "inventory.8.2": {
-        "type": "switch",
-        "variable": "deer",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.8.2.0.1",
-            "inventory.8.2.0.2"
-        ]
-    },
-    "inventory.8.2.0.1": {
-        "type": "goto",
-        "next": "inventory.9"
-    },
-    "inventory.8.2.0.2": {
-        "type": "text",
-        "text": "and",
-        "lift": " ",
-        "drop": " ",
-        "next": "inventory.9"
-    },
-    "inventory.9": {
-        "type": "switch",
-        "variable": "fish",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.9.1",
-            "inventory.9.2"
-        ]
-    },
-    "inventory.9.1": {
-        "type": "goto",
-        "next": "inventory.10"
-    },
-    "inventory.9.2": {
-        "type": "text",
-        "text": "fish for",
-        "lift": "",
-        "drop": " ",
-        "next": "inventory.9.2.1"
-    },
-    "inventory.9.2.1": {
-        "type": "print",
-        "variable": "fish",
-        "next": "inventory.9.2.2"
-    },
-    "inventory.9.2.2": {
-        "type": "text",
-        "text": "meal",
-        "lift": " ",
-        "drop": "",
-        "next": "inventory.9.2.3"
-    },
-    "inventory.9.2.3": {
-        "type": "switch",
-        "variable": "fish",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "inventory.9.2.3.1",
-            "inventory.9.2.3.2",
-            "inventory.9.2.3.3"
-        ]
-    },
-    "inventory.9.2.3.1": {
-        "type": "text",
-        "text": "s",
-        "lift": "",
-        "drop": "",
-        "next": "inventory.10"
-    },
-    "inventory.9.2.3.2": {
-        "type": "goto",
-        "next": "inventory.10"
-    },
-    "inventory.9.2.3.3": {
-        "type": "text",
-        "text": "s",
-        "lift": "",
-        "drop": "",
-        "next": "inventory.10"
-    },
-    "inventory.10": {
-        "type": "text",
-        "text": "in reserve.",
-        "lift": " ",
-        "drop": " ",
-        "next": null
-    },
-    "time": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "time.1"
-    },
-    "time.1": {
-        "type": "switch",
-        "variable": "hour",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "time.1.1",
-            "time.1.2",
-            "time.1.3",
-            "time.1.4",
-            "time.1.5",
-            "time.1.6",
-            "time.1.7",
-            "time.1.8",
-            "time.1.9",
-            "time.1.10",
-            "time.1.11",
-            "time.1.12",
-            "time.1.13",
-            "time.1.14"
-        ]
-    },
-    "time.1.1": {
-        "type": "text",
-        "text": "high don, the hour of the rowan",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.2": {
-        "type": "text",
-        "text": "elm hour, the hour after high don",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.3": {
-        "type": "text",
-        "text": "fir hour, the hour before high non",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.4": {
-        "type": "text",
-        "text": "high non, with the sun directly overhead",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.5": {
-        "type": "text",
-        "text": "cedar hour, the hour after high non",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.6": {
-        "type": "text",
-        "text": "holly hour, the hour before high dusk",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.7": {
-        "type": "text",
-        "text": "high dusk, the hour of the hawthorne",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.8": {
-        "type": "text",
-        "text": "low dusk, the hour of the alder",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.9": {
-        "type": "text",
-        "text": "ash hour, the hour after low dusk",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.10": {
-        "type": "text",
-        "text": "oak hour, the hour before low non",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.11": {
-        "type": "text",
-        "text": "low non, the hour of the elder and the middle of the night",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.12": {
-        "type": "text",
-        "text": "birch hour, the hour after low non",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.13": {
-        "type": "text",
-        "text": "yew hour, the hour before low don",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "time.1.14": {
-        "type": "text",
-        "text": "low don, the hour of the willow",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "status": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "status.1"
-    },
-    "status.1": {
-        "type": "switch",
-        "variable": "thirst",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "status.1.1",
-            "status.1.2",
-            "status.1.3",
-            "status.1.4",
-            "status.1.5"
-        ]
-    },
-    "status.1.1": {
-        "type": "switch",
-        "variable": "hunger",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "status.1.1.0.1",
-            "status.1.1.0.2",
-            "status.1.1.0.3"
-        ]
-    },
-    "status.1.1.0.1": {
-        "type": "goto",
-        "next": "status.2"
-    },
-    "status.1.1.0.2": {
-        "type": "goto",
-        "next": "status.2"
-    },
-    "status.1.1.0.3": {
-        "type": "text",
-        "text": "You",
-        "lift": "",
-        "drop": " ",
-        "next": "status.1.1.0.3.1"
-    },
-    "status.1.1.0.3.1": {
-        "type": "call",
-        "label": "hunger",
-        "branch": "hunger",
-        "next": "status.1.1.0.3.2"
-    },
-    "status.1.1.0.3.2": {
-        "type": "text",
-        "text": ".",
-        "lift": "",
-        "drop": " ",
-        "next": "status.2"
-    },
-    "status.1.2": {
-        "type": "switch",
-        "variable": "hunger",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "status.1.2.0.1",
-            "status.1.2.0.2",
-            "status.1.2.0.3"
-        ]
-    },
-    "status.1.2.0.1": {
-        "type": "goto",
-        "next": "status.2"
-    },
-    "status.1.2.0.2": {
-        "type": "text",
-        "text": "You are thirsty.",
-        "lift": "",
-        "drop": " ",
-        "next": "status.2"
-    },
-    "status.1.2.0.3": {
-        "type": "text",
-        "text": "You",
-        "lift": " ",
-        "drop": " ",
-        "next": "status.1.2.0.3.1"
-    },
-    "status.1.2.0.3.1": {
-        "type": "call",
-        "label": "hunger",
-        "branch": "hunger",
-        "next": "status.1.2.0.3.2"
-    },
-    "status.1.2.0.3.2": {
-        "type": "text",
-        "text": "and have some thirst.",
-        "lift": " ",
-        "drop": " ",
-        "next": "status.2"
-    },
-    "status.1.3": {
-        "type": "text",
-        "text": "You are quite thirsty",
-        "lift": " ",
-        "drop": "",
-        "next": "status.1.3.1"
-    },
-    "status.1.3.1": {
-        "type": "switch",
-        "variable": "hunger",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "status.1.3.1.1",
-            "status.1.3.1.2"
-        ]
-    },
-    "status.1.3.1.1": {
-        "type": "goto",
-        "next": "status.1.3.2"
-    },
-    "status.1.3.1.2": {
-        "type": "text",
-        "text": "and",
-        "lift": " ",
-        "drop": " ",
-        "next": "status.1.3.1.2.1"
-    },
-    "status.1.3.1.2.1": {
-        "type": "call",
-        "label": "hunger",
-        "branch": "hunger",
-        "next": "status.1.3.2"
-    },
-    "status.1.3.2": {
-        "type": "text",
-        "text": ".",
-        "lift": "",
-        "drop": " ",
-        "next": "status.2"
-    },
-    "status.1.4": {
-        "type": "text",
-        "text": "You are parched.",
-        "lift": " ",
-        "drop": " ",
-        "next": "status.2"
-    },
-    "status.1.5": {
-        "type": "text",
-        "text": "Your thirst consumes you.",
-        "lift": " ",
-        "drop": " ",
-        "next": "status.2"
-    },
-    "status.2": {
-        "type": "jge",
-        "variable": "thirst",
-        "value": 5,
-        "branch": "status.4",
-        "next": "dying"
-    },
-    "status.4": {
-        "type": "jge",
-        "variable": "hunger",
-        "value": 5,
-        "branch": null,
-        "next": "dying"
-    },
-    "dying": {
-        "type": "text",
-        "text": "You are at death’s door.",
-        "lift": " ",
-        "drop": " ",
-        "next": null
-    },
-    "hunger": {
-        "type": "subroutine",
-        "locals": [],
-        "next": "hunger.1"
-    },
-    "hunger.1": {
-        "type": "switch",
-        "variable": "hunger",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "hunger.1.1",
-            "hunger.1.2",
-            "hunger.1.3",
-            "hunger.1.4",
-            "hunger.1.5",
-            "hunger.1.6",
-            "hunger.1.7",
-            "hunger.1.8",
-            "hunger.1.9"
-        ]
-    },
-    "hunger.1.1": {
-        "type": "goto",
-        "next": null
-    },
-    "hunger.1.2": {
-        "type": "text",
-        "text": "could eat",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "hunger.1.3": {
-        "type": "text",
-        "text": "have an appetite",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "hunger.1.4": {
-        "type": "text",
-        "text": "are hungry",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "hunger.1.5": {
-        "type": "text",
-        "text": "need food badly",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "hunger.1.6": {
-        "type": "text",
-        "text": "are starving",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "hunger.1.7": {
-        "type": "text",
-        "text": "have missed more meals than you care to remember",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "hunger.1.8": {
-        "type": "text",
-        "text": "are emaciated and wasting away",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "hunger.1.9": {
-        "type": "text",
-        "text": "are likely to die of your hunger soon",
-        "lift": " ",
-        "drop": "",
-        "next": null
-    },
-    "fin": {
-        "type": "text",
-        "text": "Having travelled",
-        "lift": " ",
-        "drop": " ",
-        "next": "fin.1"
-    },
-    "fin.1": {
-        "type": "switch",
-        "variable": "day",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "fin.1.1",
-            "fin.1.2"
-        ]
-    },
-    "fin.1.1": {
-        "type": "goto",
-        "next": "fin.2"
-    },
-    "fin.1.2": {
-        "type": "print",
-        "variable": "day",
-        "next": "fin.1.2.1"
-    },
-    "fin.1.2.1": {
-        "type": "text",
-        "text": "day",
-        "lift": " ",
-        "drop": "",
-        "next": "fin.1.2.2"
-    },
-    "fin.1.2.2": {
-        "type": "switch",
-        "variable": "day",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "fin.1.2.2.1",
-            "fin.1.2.2.2",
-            "fin.1.2.2.3"
-        ]
-    },
-    "fin.1.2.2.1": {
-        "type": "text",
-        "text": "s",
-        "lift": "",
-        "drop": "",
-        "next": "fin.1.2.3"
-    },
-    "fin.1.2.2.2": {
-        "type": "goto",
-        "next": "fin.1.2.3"
-    },
-    "fin.1.2.2.3": {
-        "type": "text",
-        "text": "s",
-        "lift": "",
-        "drop": "",
-        "next": "fin.1.2.3"
-    },
-    "fin.1.2.3": {
-        "type": "text",
-        "text": "and",
-        "lift": " ",
-        "drop": " ",
-        "next": "fin.2"
-    },
-    "fin.2": {
-        "type": "switch",
-        "variable": "hour",
-        "value": 0,
-        "mode": "walk",
-        "branches": [
-            "fin.2.1",
-            "fin.2.2",
-            "fin.2.3"
-        ]
-    },
-    "fin.2.1": {
-        "type": "text",
-        "text": "no hours",
-        "lift": "",
-        "drop": "",
-        "next": "fin.3"
-    },
-    "fin.2.2": {
-        "type": "text",
-        "text": "an hour",
-        "lift": "",
-        "drop": "",
-        "next": "fin.3"
-    },
-    "fin.2.3": {
-        "type": "print",
-        "variable": "hour",
-        "next": "fin.2.3.1"
-    },
-    "fin.2.3.1": {
-        "type": "text",
-        "text": "hours",
-        "lift": " ",
-        "drop": "",
-        "next": "fin.3"
-    },
-    "fin.3": {
-        "type": "text",
-        "text": ", the",
-        "lift": "",
-        "drop": " ",
-        "next": "fin.4"
-    },
-    "fin.4": {
-        "type": "print",
-        "variable": "x",
-        "next": "fin.5"
-    },
-    "fin.5": {
-        "type": "text",
-        "text": "league marker serves passes for your tomb stone.",
-        "lift": " ",
-        "drop": " ",
-        "next": "fin.6"
-    },
-    "fin.6": {
-        "type": "paragraph",
-        "next": "fin.7"
-    },
-    "fin.7": {
-        "type": "text",
-        "text": "“Here lies",
-        "lift": " ",
-        "drop": " ",
-        "next": "fin.8"
-    },
-    "fin.8": {
-        "type": "print",
-        "variable": "x",
-        "next": "fin.9"
-    },
-    "fin.9": {
-        "type": "text",
-        "text": "leagues. May they rest in peace.”",
-        "lift": " ",
-        "drop": " ",
-        "next": "fin.10"
-    },
-    "fin.10": {
-        "type": "set",
-        "variable": "end",
-        "value": 1,
-        "next": null
+        "next": null,
+        "position": "94:3"
     }
 }
