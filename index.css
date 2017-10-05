@@ -1,47 +1,28 @@
-
-@media handheld {
-    body {
-        font-size: 100%;
-    }
-}
-
 body {
     font-family: Libre Baskerville, Book Antiqua, serif;
-    font-size: 150%;
+    font-size: 200%;
     transition: color 1s;
-    overflow: hidden;
 }
 
-.body {
+.parent {
     position: absolute;
+    display: table;
     top: 0;
-    bottom: 1.5em;
     left: 0;
-    right: 0;
-}
-
-.kni-frame {
-    position: absolute;
     height: 100%;
     width: 100%;
-    overflow-y: scroll;
+    outline: dotted blue 1px;
     transition: transform 1s ease, opacity 1s ease-out;
 }
 
-.kni-frame-a {
-    display: table;
-    height: 100%;
-    width: 100%;
-}
-
-.kni-frame-b {
+.child {
     display: table-cell;
     vertical-align: middle;
     padding: 1em;
     width: 40ex;
 }
 
-.kni-frame-c {
+.outer {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -49,7 +30,7 @@ body {
     align-items: flex-start;
 }
 
-.kni-body {
+.inner {
     display: flex-item;
     flex: 0 1 auto;
     max-width: 40ex;
@@ -70,20 +51,19 @@ li {
 }
 
 a {
-    color: inherit;
-    font-family: 200%;
+    color: hsla(240, 42.00%, 25.00%, 1);
 }
 
 a:link {
-    color: inherit;
+    color: hsla(240, 42.00%, 25.00%, 1);
 }
 
 a:hover {
-    color: inherit;
+    color: hsla(240, 42.00%, 25.00%, 1);
 }
 
 a:visited {
-    color: inherit;
+    color: hsla(240, 42.00%, 25.00%, 1);
 }
 
 .about {
@@ -92,24 +72,4 @@ a:visited {
     bottom: 0;
     right: 0;
     margin: 10px;
-    z-index: 100;
-}
-
-.reset {
-    position: absolute;
-    height: 1em;
-    bottom: 0;
-    left: 0;
-    margin: 10px;
-}
-
-.heavens {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
 }

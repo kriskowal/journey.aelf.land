@@ -58,102 +58,177 @@ global = this;
         main = bundle[filename];
         main._require();
     }
-})([["document.js","inkblot","document.js",{},function (require, exports, module, __filename, __dirname){
+})([["animator.js","blick","animator.js",{"raf":11},function (require, exports, module, __filename, __dirname){
 
-// inkblot/document.js
-// -------------------
+// blick/animator.js
+// -----------------
 
-'use strict';
+"use strict";
 
-module.exports = Document;
+var defaultRequestAnimation = require("raf");
 
-function Document(element) {
+module.exports = Animator;
+
+function Animator(requestAnimation) {
     var self = this;
-    this.element = element;
-    this.engine = null;
-    this.carry = '';
-    this.cursor = null;
-    this.next = null;
-    this.options = null;
-    this.p = false;
-    this.br = false;
-    this.onclick = onclick;
-    function onclick(event) {
-        self.answer(event.target.number);
-    }
-    Object.seal(this);
+    self._requestAnimation = requestAnimation || defaultRequestAnimation;
+    self.controllers = [];
+    // This thunk is doomed to deoptimization for multiple reasons, but passes
+    // off as quickly as possible to the unrolled animation loop.
+    self._animate = function () {
+        try {
+            self.animate(Date.now());
+        } catch (error) {
+            self.requestAnimation();
+            throw error;
+        }
+    };
 }
 
-Document.prototype.write = function write(lift, text, drop) {
-    var document = this.element.ownerDocument;
-    if (this.p) {
-        this.cursor = document.createElement("p");
-        this.element.insertBefore(this.cursor, this.options);
-        this.p = false;
-        this.br = false;
+Animator.prototype.requestAnimation = function () {
+    if (!this.requested) {
+        this._requestAnimation(this._animate);
     }
-    if (this.br) {
-        this.cursor.appendChild(document.createElement("br"));
-        this.br = false;
+    this.requested = true;
+};
+
+Animator.prototype.animate = function (now) {
+    var node, temp;
+
+    this.requested = false;
+
+    // Measure
+    for (var index = 0; index < this.controllers.length; index++) {
+        var controller = this.controllers[index];
+        if (controller.measure) {
+            controller.component.measure(now);
+            controller.measure = false;
+        }
     }
-    this.cursor.appendChild(document.createTextNode((this.carry || lift) + text));
-    this.carry = drop;
+
+    // Transition
+    for (var index = 0; index < this.controllers.length; index++) {
+        var controller = this.controllers[index];
+        // Unlke others, skipped if draw or redraw are scheduled and left on
+        // the schedule for the next animation frame.
+        if (controller.transition) {
+            if (!controller.draw && !controller.redraw) {
+                controller.component.transition(now);
+                controller.transition = false;
+            } else {
+                this.requestAnimation();
+            }
+        }
+    }
+
+    // Animate
+    // If any components have animation set, continue animation.
+    for (var index = 0; index < this.controllers.length; index++) {
+        var controller = this.controllers[index];
+        if (controller.animate) {
+            controller.component.animate(now);
+            this.requestAnimation();
+            // Unlike others, not reset implicitly.
+        }
+    }
+
+    // Draw
+    for (var index = 0; index < this.controllers.length; index++) {
+        var controller = this.controllers[index];
+        if (controller.draw) {
+            controller.component.draw(now);
+            controller.draw = false;
+        }
+    }
+
+    // Redraw
+    for (var index = 0; index < this.controllers.length; index++) {
+        var controller = this.controllers[index];
+        if (controller.redraw) {
+            controller.component.redraw(now);
+            controller.redraw = false;
+        }
+    }
 };
 
-Document.prototype.break = function _break() {
-    this.br = true;
+Animator.prototype.add = function (component) {
+    var controller = new AnimationController(component, this);
+    this.controllers.push(controller);
+    return controller;
 };
 
-Document.prototype.paragraph = function paragraph() {
-    this.p = true;
+function AnimationController(component, controller) {
+    this.component = component;
+    this.controller = controller;
+
+    this.measure = false;
+    this.transition = false;
+    this.animate = false;
+    this.draw = false;
+    this.redraw = false;
+}
+
+AnimationController.prototype.destroy = function () {
 };
 
-Document.prototype.option = function option(number, label) {
-    var document = this.element.ownerDocument;
-    var tr = document.createElement("tr");
-    this.options.appendChild(tr);
-    var th = document.createElement("th");
-    tr.appendChild(th);
-    th.innerText = number + '.';
-    var td = document.createElement("td");
-    td.innerText = label;
-    td.number = number;
-    td.onclick = this.onclick;
-    tr.appendChild(td);
+AnimationController.prototype.requestMeasure = function () {
+    if (!this.component.measure) {
+        throw new Error("Can't requestMeasure because component does not implement measure");
+    }
+    this.measure = true;
+    this.controller.requestAnimation();
 };
 
-Document.prototype.flush = function flush() {
-    // No-op (for console only)
+AnimationController.prototype.cancelMeasure = function () {
+    this.measure = false;
 };
 
-Document.prototype.pardon = function pardon() {
-    this.clear();
-    // No-op (for console only)
+AnimationController.prototype.requestTransition = function () {
+    if (!this.component.transition) {
+        throw new Error("Can't requestTransition because component does not implement transition");
+    }
+    this.transition = true;
+    this.controller.requestAnimation();
 };
 
-Document.prototype.display = function display() {
-    // No-op (for console only)
+AnimationController.prototype.cancelTransition = function () {
+    this.transition = false;
 };
 
-Document.prototype.clear = function clear() {
-    var document = this.element.ownerDocument;
-    this.element.innerHTML = "";
-    this.options = document.createElement("table");
-    this.element.appendChild(this.options);
-    this.cursor = null;
-    this.br = false;
-    this.p = true;
-    this.carry = '';
+AnimationController.prototype.requestAnimation = function () {
+    if (!this.component.animate) {
+        throw new Error("Can't requestAnimation because component does not implement animate");
+    }
+    this.animate = true;
+    this.controller.requestAnimation();
 };
 
-Document.prototype.question = function question() {
+AnimationController.prototype.cancelAnimation = function () {
+    this.animate = false;
 };
 
-Document.prototype.answer = function answer(text) {
-    this.engine.answer(text);
+AnimationController.prototype.requestDraw = function () {
+    if (!this.component.draw) {
+        throw new Error("Can't requestDraw because component does not implement draw");
+    }
+    this.draw = true;
+    this.controller.requestAnimation();
 };
 
-Document.prototype.close = function close() {
+AnimationController.prototype.cancelDraw = function () {
+    this.draw = false;
+};
+
+AnimationController.prototype.requestRedraw = function () {
+    if (!this.component.redraw) {
+        throw new Error("Can't requestRedraw because component does not implement redraw");
+    }
+    this.redraw = true;
+    this.controller.requestAnimation();
+};
+
+AnimationController.prototype.cancelRedraw = function () {
+    this.redraw = false;
 };
 
 }],["engine.js","inkblot","engine.js",{"./story":3},function (require, exports, module, __filename, __dirname){
@@ -882,7 +957,142 @@ function tie(end) {
     this.next = end;
 }
 
-}],["heavens.js","journey.aelf.land","heavens.js",{"ndim/point2":8},function (require, exports, module, __filename, __dirname){
+}],["document.js","journey.aelf.land","document.js",{},function (require, exports, module, __filename, __dirname){
+
+// journey.aelf.land/document.js
+// -----------------------------
+
+'use strict';
+
+module.exports = Document;
+
+function Document(element, redraw) {
+    var self = this;
+    this.document = element.ownerDocument;
+    this.parent = element;
+    this.container = null;
+    this.element = null;
+    this.engine = null;
+    this.carry = '';
+    this.cursor = null;
+    this.next = null;
+    this.options = null;
+    this.p = false;
+    this.br = false;
+    this.onclick = onclick;
+    this.redraw = redraw;
+    function onclick(event) {
+        self.answer(event.target.number);
+    }
+    Object.seal(this);
+}
+
+Document.prototype.write = function write(lift, text, drop) {
+    var document = this.element.ownerDocument;
+    if (this.p) {
+        this.cursor = document.createElement("p");
+        this.element.insertBefore(this.cursor, this.options);
+        this.p = false;
+        this.br = false;
+    }
+    if (this.br) {
+        this.cursor.appendChild(document.createElement("br"));
+        this.br = false;
+    }
+    this.cursor.appendChild(document.createTextNode((this.carry || lift) + text));
+    this.carry = drop;
+};
+
+Document.prototype.break = function _break() {
+    this.br = true;
+};
+
+Document.prototype.paragraph = function paragraph() {
+    this.p = true;
+};
+
+Document.prototype.option = function option(number, label) {
+    var document = this.element.ownerDocument;
+    var tr = document.createElement("tr");
+    this.options.appendChild(tr);
+    var th = document.createElement("th");
+    tr.appendChild(th);
+    th.innerText = number + '.';
+    var td = document.createElement("td");
+    td.innerText = label;
+    td.number = number;
+    td.onclick = this.onclick;
+    tr.appendChild(td);
+};
+
+Document.prototype.flush = function flush() {
+    this.redraw();
+    // No-op (for console only)
+};
+
+Document.prototype.pardon = function pardon() {
+    this.options.innerHTML = '';
+};
+
+Document.prototype.display = function display() {
+    this.redraw();
+    this.container.style.opacity = 0;
+    this.container.style.transform = 'translateX(2ex)';
+    this.parent.appendChild(this.container);
+
+    // TODO not this
+    var container = this.container;
+    setTimeout(function () {
+        container.style.opacity = 1;
+        container.style.transform = 'translateX(0)';
+    }, 10);
+};
+
+Document.prototype.clear = function clear() {
+    if (this.container) {
+        this.container.style.opacity = 0;
+        this.container.style.transform = 'translateX(-2ex)';
+        this.container.addEventListener("transitionend", this);
+    }
+
+    this.container = this.document.createElement("div");
+    this.container.classList.add("parent");
+    this.container.style.opacity = 0;
+    var child = this.document.createElement("div");
+    child.classList.add("child");
+    this.container.appendChild(child);
+    var outer = this.document.createElement("outer");
+    outer.classList.add("outer");
+    child.appendChild(outer);
+    this.element = this.document.createElement("inner");
+    this.element.classList.add("inner");
+    outer.appendChild(this.element);
+    this.options = this.document.createElement("table");
+    this.element.appendChild(this.options);
+
+    this.cursor = null;
+    this.br = false;
+    this.p = true;
+    this.carry = '';
+};
+
+Document.prototype.handleEvent = function handleEvent(event) {
+    if (event.target.parentNode !== this.parent) {
+        this.parent.removeChild(event.target);
+    }
+};
+
+Document.prototype.question = function question() {
+};
+
+Document.prototype.answer = function answer(text) {
+    this.engine.answer(text);
+};
+
+Document.prototype.close = function close() {
+};
+
+}],["heavens.js","journey.aelf.land","heavens.js",{"ndim/point2":9},function (require, exports, module, __filename, __dirname){
 
 // journey.aelf.land/heavens.js
 // ----------------------------
@@ -903,17 +1113,37 @@ var lunar = new Point2();
 module.exports = Heavens;
 
 function Heavens(body, scope) {
-    // this.animator = scope.animator.add(this);
+    this.animator = scope.animator.add(this);
+    this.animator.requestAnimation();
     this.window = scope.window;
     this.document = this.window.document;
-    // this.animator.requestAnimation();
-    this.day = 0;
+    this.day = 0.5 / 14;
+    this.day$ = 0;
     this.month = 0.5;
-    // var day = Date.now() / 240000 * 2 % 1;
-    // var month = 0.5; // A childish simplification
+    this.phase = 'day';
+    this.sheet = null;
+    Object.seal(this);
 }
 
+Heavens.prototype.setSheet = function (sheet) {
+    sheet.insertRule('body { color: black }', 0);
+    this.sheet = sheet;
+};
+
+Heavens.prototype.animate = function animate() {
+    var r = 0.99;
+    this.day$ = this.day$ * r + this.day * (1 - r);
+
+    var d = this.day - this.day$;
+    if (Math.abs(d) > 0.001) {
+        this.redraw();
+    }
+};
+
 Heavens.prototype.redraw = function redraw() {
+    var day = this.day$ % 1.0;
+    var month = this.month;
+
     var scene = this.document.querySelector("#scene");
     windowSize.x = this.window.innerWidth;
     windowSize.y = this.window.innerHeight;
@@ -933,60 +1163,67 @@ Heavens.prototype.redraw = function redraw() {
     var breadth = windowSize.x / documentSize.x / scale * 500;
 
     //window.document.querySelector("#atmosphere").style.opacity = 0;
-    solar.y = (-Math.sin(2 * Math.PI * this.day) * 1000 + 1000).toFixed(2);
-    lunar.y = (-Math.sin(2 * Math.PI * this.day + 2 * Math.PI * this.month) * 1000 + 1000).toFixed(2);
-    solar.x = (-Math.cos(2 * Math.PI * this.day) * breadth + 1000).toFixed(2);
-    lunar.x = (-Math.cos(2 * Math.PI * this.day + 2 * Math.PI * this.month) * breadth + 1000).toFixed(2);
+    solar.y = (-Math.sin(2 * Math.PI * day) * 1000 + 1000).toFixed(2);
+    lunar.y = (-Math.sin(2 * Math.PI * day + 2 * Math.PI * month) * 1000 + 1000).toFixed(2);
+    solar.x = (-Math.cos(2 * Math.PI * day) * breadth + 1000).toFixed(2);
+    lunar.x = (-Math.cos(2 * Math.PI * day + 2 * Math.PI * month) * breadth + 1000).toFixed(2);
     var cycle =
-        Math.sin(2 * Math.PI * this.day) / 1 +
-        Math.sin(6 * Math.PI * this.day) / 3 +
-        Math.sin(10 * Math.PI * this.day) / 5 +
-        Math.sin(14 * Math.PI * this.day) / 7;
-        //Math.sin(18 * Math.PI * this.day) / 9;
+        Math.sin(2 * Math.PI * day) / 1 +
+        Math.sin(6 * Math.PI * day) / 3 +
+        Math.sin(10 * Math.PI * day) / 5 +
+        Math.sin(14 * Math.PI * day) / 7;
+        //Math.sin(18 * Math.PI * day) / 9;
     var clamped = Math.min(1, Math.max(-1, cycle * 1.5));
     var opacity = clamped / 2 + .5;
     this.document.querySelector("#atmosphere").style.opacity = opacity;
-    var rotation = (this.day * 360).toFixed(2);
+    var rotation = (day * 360).toFixed(2);
     this.document.querySelector("#stars").setAttribute("transform", "translate(1000, 750) rotate(" + rotation + ")");
     this.document.querySelector("#sun").setAttribute("transform", "translate(" + solar.x + ", " + solar.y + ")");
     this.document.querySelector("#moon").setAttribute("transform", "translate(" + lunar.x + ", " + lunar.y + ")");
+
+    var phase = day < 0.5 ? 'day' : 'night';
+    if (phase !== this.phase) {
+        this.sheet.deleteRule(0);
+        if (day < 0.5) {
+            this.sheet.insertRule('body { color: black; }', 0);
+        } else {
+            this.sheet.insertRule('body { color: hsla(240, 25.00%, 83.00%, 1); text-shadow: black 0 0 5pt; }', 0);
+        }
+        this.phase = phase;
+    }
 };
 
-}],["index.js","journey.aelf.land","index.js",{"inkblot/engine":1,"inkblot/document":0,"./journey.json":6,"./heavens":4},function (require, exports, module, __filename, __dirname){
+}],["index.js","journey.aelf.land","index.js",{"blick":0,"inkblot/engine":1,"./document":4,"./journey.json":7,"./heavens":5},function (require, exports, module, __filename, __dirname){
 
 // journey.aelf.land/index.js
 // --------------------------
 
 'use strict';
+var Animator = require('blick');;
 var Engine = require('inkblot/engine');
-var Document = require('inkblot/document');
+var Document = require('./document');
 var story = require('./journey.json');
 var Heavens = require('./heavens');
-var doc = new Document(document.getElementById('body'));
-var engine = new Engine(story, 'start', doc, doc);
-doc.clear();
-engine.continue();
-
-var style = document.getElementById('style');
-var sheet = style.sheet;
-sheet.insertRule('body { color: black }', 0);
 
 var scope = {};
 scope.window = window;
+scope.animator = new Animator();
+
+var style = document.getElementById('style');
+
 var heavens = new Heavens(null, scope);
+heavens.setSheet(style.sheet);
+var doc = new Document(document.body, redraw);
+var engine = new Engine(story, 'start', doc, doc);
+
+doc.clear();
+engine.continue();
 
 function redraw() {
-    var hour = engine.variables.hour;
-    var day = ((hour + 0.5) / 14) % 1.0;
+    var hour = engine.variables.hour + engine.variables.day * 14;
+    var day = (hour + 0.5) / 14;
     heavens.day = day;
     heavens.month = 0.5;
-    heavens.redraw();
-    sheet.deleteRule(0);
-    if (day < 0.5) {
-        sheet.insertRule('body { color: black; }', 0);
-    } else {
-        sheet.insertRule('body { color: hsla(240, 25.00%, 83.00%, 1); text-shadow: black 0 0 5pt; }', 0);
-    }
 }
 redraw();
 
@@ -994,8 +1231,8 @@ window.onkeypress = function onkeypress(event) {
     if (engine.variables.end) {
         return;
     }
-    var key = event.code;
-    var match = /^Digit(\d+)$/.exec(key);
+    var key = event.key || String.fromCharCode(event.charCode);
+    var match = /^(\d+)$/.exec(key);
     if (match) {
         engine.answer(match[1]);
     }
@@ -1022,55 +1259,55 @@ module.exports = {
     },
     "start.2": {
         "type": "set",
-        "variable": "hunger",
+        "variable": "day",
         "value": 0,
         "next": "start.3"
     },
     "start.3": {
         "type": "set",
-        "variable": "thirst",
+        "variable": "hunger",
         "value": 0,
         "next": "start.4"
     },
     "start.4": {
         "type": "set",
-        "variable": "fish",
+        "variable": "thirst",
         "value": 0,
         "next": "start.5"
     },
     "start.5": {
         "type": "set",
-        "variable": "deer",
+        "variable": "fish",
         "value": 0,
         "next": "start.6"
     },
     "start.6": {
         "type": "set",
-        "variable": "water",
+        "variable": "deer",
         "value": 0,
         "next": "start.7"
     },
     "start.7": {
         "type": "set",
-        "variable": "empty",
-        "value": 2,
+        "variable": "water",
+        "value": 0,
         "next": "start.8"
     },
     "start.8": {
         "type": "set",
-        "variable": "river",
-        "value": 0,
+        "variable": "empty",
+        "value": 2,
         "next": "start.9"
     },
     "start.9": {
         "type": "set",
-        "variable": "game",
+        "variable": "river",
         "value": 0,
         "next": "start.10"
     },
     "start.10": {
         "type": "set",
-        "variable": "end",
+        "variable": "game",
         "value": 0,
         "next": "start.11"
     },
@@ -1106,7 +1343,7 @@ module.exports = {
         "text": "However, you succumb to your thirst.",
         "lift": " ",
         "drop": " ",
-        "next": "death"
+        "next": "fin"
     },
     "journey.3": {
         "type": "jge",
@@ -1120,7 +1357,7 @@ module.exports = {
         "text": "However, You succumb to your hunger.",
         "lift": " ",
         "drop": " ",
-        "next": "death"
+        "next": "fin"
     },
     "journey.6": {
         "type": "call",
@@ -2275,6 +2512,12 @@ module.exports = {
         "type": "set",
         "variable": "hour",
         "value": 0,
+        "next": "tick.5"
+    },
+    "tick.5": {
+        "type": "add",
+        "variable": "day",
+        "value": 1,
         "next": null
     },
     "now": {
@@ -3962,26 +4205,155 @@ module.exports = {
         "drop": "",
         "next": null
     },
-    "death": {
+    "fin": {
         "type": "text",
-        "text": "The",
+        "text": "Having travelled",
         "lift": " ",
         "drop": " ",
-        "next": "death.1"
+        "next": "fin.1"
     },
-    "death.1": {
+    "fin.1": {
+        "type": "switch",
+        "variable": "day",
+        "value": 0,
+        "mode": "walk",
+        "branches": [
+            "fin.1.1",
+            "fin.1.2"
+        ]
+    },
+    "fin.1.1": {
+        "type": "goto",
+        "next": "fin.2"
+    },
+    "fin.1.2": {
+        "type": "print",
+        "variable": "day",
+        "next": "fin.1.2.1"
+    },
+    "fin.1.2.1": {
+        "type": "text",
+        "text": "day",
+        "lift": " ",
+        "drop": "",
+        "next": "fin.1.2.2"
+    },
+    "fin.1.2.2": {
+        "type": "switch",
+        "variable": "day",
+        "value": 0,
+        "mode": "walk",
+        "branches": [
+            "fin.1.2.2.1",
+            "fin.1.2.2.2",
+            "fin.1.2.2.3"
+        ]
+    },
+    "fin.1.2.2.1": {
+        "type": "text",
+        "text": "s",
+        "lift": "",
+        "drop": "",
+        "next": "fin.1.2.3"
+    },
+    "fin.1.2.2.2": {
+        "type": "goto",
+        "next": "fin.1.2.3"
+    },
+    "fin.1.2.2.3": {
+        "type": "text",
+        "text": "s",
+        "lift": "",
+        "drop": "",
+        "next": "fin.1.2.3"
+    },
+    "fin.1.2.3": {
+        "type": "text",
+        "text": "and",
+        "lift": " ",
+        "drop": " ",
+        "next": "fin.2"
+    },
+    "fin.2": {
+        "type": "switch",
+        "variable": "hour",
+        "value": 0,
+        "mode": "walk",
+        "branches": [
+            "fin.2.1",
+            "fin.2.2",
+            "fin.2.3"
+        ]
+    },
+    "fin.2.1": {
+        "type": "text",
+        "text": "no hours",
+        "lift": "",
+        "drop": "",
+        "next": "fin.3"
+    },
+    "fin.2.2": {
+        "type": "text",
+        "text": "an hour",
+        "lift": "",
+        "drop": "",
+        "next": "fin.3"
+    },
+    "fin.2.3": {
+        "type": "print",
+        "variable": "hour",
+        "next": "fin.2.3.1"
+    },
+    "fin.2.3.1": {
+        "type": "text",
+        "text": "hours",
+        "lift": " ",
+        "drop": "",
+        "next": "fin.3"
+    },
+    "fin.3": {
+        "type": "text",
+        "text": ", the",
+        "lift": "",
+        "drop": " ",
+        "next": "fin.4"
+    },
+    "fin.4": {
         "type": "print",
         "variable": "x",
-        "next": "death.2"
+        "next": "fin.5"
     },
-    "death.2": {
+    "fin.5": {
         "type": "text",
-        "text": "league marker serves as your grave stone.",
+        "text": "league marker serves passes for your tomb stone.",
         "lift": " ",
         "drop": " ",
-        "next": "death.3"
+        "next": "fin.6"
     },
-    "death.3": {
+    "fin.6": {
+        "type": "paragraph",
+        "next": "fin.7"
+    },
+    "fin.7": {
+        "type": "text",
+        "text": "“Here lies",
+        "lift": " ",
+        "drop": " ",
+        "next": "fin.8"
+    },
+    "fin.8": {
+        "type": "print",
+        "variable": "x",
+        "next": "fin.9"
+    },
+    "fin.9": {
+        "type": "text",
+        "text": "leagues. May they rest in peace.”",
+        "lift": " ",
+        "drop": " ",
+        "next": "fin.10"
+    },
+    "fin.10": {
         "type": "set",
         "variable": "end",
         "value": 1,
@@ -4053,7 +4425,7 @@ Point.prototype.max = function () {
     return this.clone().maxThis();
 };
 
-}],["point2.js","ndim","point2.js",{"./point":7},function (require, exports, module, __filename, __dirname){
+}],["point2.js","ndim","point2.js",{"./point":8},function (require, exports, module, __filename, __dirname){
 
 // ndim/point2.js
 // --------------
@@ -4200,5 +4572,133 @@ Point2.prototype.equals = function (that) {
 Point2.prototype.lessThan = function (that) {
     return this.x < that.x && this.y < that.y;
 };
+
+}],["lib/performance-now.js","performance-now/lib","performance-now.js",{},function (require, exports, module, __filename, __dirname){
+
+// performance-now/lib/performance-now.js
+// --------------------------------------
+
+// Generated by CoffeeScript 1.6.3
+(function() {
+  var getNanoSeconds, hrtime, loadTime;
+
+  if ((typeof performance !== "undefined" && performance !== null) && performance.now) {
+    module.exports = function() {
+      return performance.now();
+    };
+  } else if ((typeof process !== "undefined" && process !== null) && process.hrtime) {
+    module.exports = function() {
+      return (getNanoSeconds() - loadTime) / 1e6;
+    };
+    hrtime = process.hrtime;
+    getNanoSeconds = function() {
+      var hr;
+      hr = hrtime();
+      return hr[0] * 1e9 + hr[1];
+    };
+    loadTime = getNanoSeconds();
+  } else if (Date.now) {
+    module.exports = function() {
+      return Date.now() - loadTime;
+    };
+    loadTime = Date.now();
+  } else {
+    module.exports = function() {
+      return new Date().getTime() - loadTime;
+    };
+    loadTime = new Date().getTime();
+  }
+
+}).call(this);
+
+/*
+//@ sourceMappingURL=performance-now.map
+*/
+
+}],["index.js","raf","index.js",{"performance-now":10},function (require, exports, module, __filename, __dirname){
+
+// raf/index.js
+// ------------
+
+var now = require('performance-now')
+  , global = typeof window === 'undefined' ? {} : window
+  , vendors = ['moz', 'webkit']
+  , suffix = 'AnimationFrame'
+  , raf = global['request' + suffix]
+  , caf = global['cancel' + suffix] || global['cancelRequest' + suffix]
+  , isNative = true
+
+for(var i = 0; i < vendors.length && !raf; i++) {
+  raf = global[vendors[i] + 'Request' + suffix]
+  caf = global[vendors[i] + 'Cancel' + suffix]
+      || global[vendors[i] + 'CancelRequest' + suffix]
+}
+
+// Some versions of FF have rAF but not cAF
+if(!raf || !caf) {
+  isNative = false
+
+  var last = 0
+    , id = 0
+    , queue = []
+    , frameDuration = 1000 / 60
+
+  raf = function(callback) {
+    if(queue.length === 0) {
+      var _now = now()
+        , next = Math.max(0, frameDuration - (_now - last))
+      last = next + _now
+      setTimeout(function() {
+        var cp = queue.slice(0)
+        // Clear queue here to prevent
+        // callbacks from appending listeners
+        // to the current frame's queue
+        queue.length = 0
+        for(var i = 0; i < cp.length; i++) {
+          if(!cp[i].cancelled) {
+            try{
+              cp[i].callback(last)
+            } catch(e) {
+              setTimeout(function() { throw e }, 0)
+            }
+          }
+        }
+      }, Math.round(next))
+    }
+    queue.push({
+      handle: ++id,
+      callback: callback,
+      cancelled: false
+    })
+    return id
+  }
+
+  caf = function(handle) {
+    for(var i = 0; i < queue.length; i++) {
+      if(queue[i].handle === handle) {
+        queue[i].cancelled = true
+      }
+    }
+  }
+}
+
+module.exports = function(fn) {
+  // Wrap in a new function to prevent
+  // `cancel` potentially being assigned
+  // to the native rAF function
+  if(!isNative) {
+    return raf.call(global, fn)
+  }
+  return raf.call(global, function() {
+    try{
+      fn.apply(this, arguments)
+    } catch(e) {
+      setTimeout(function() { throw e }, 0)
+    }
+  })
+}
+module.exports.cancel = function() {
+  caf.apply(global, arguments)
+}
 
 }]])("journey.aelf.land/index.js")
